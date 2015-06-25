@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrator/Views/Admin.master" AutoEventWireup="true" CodeFile="CategoryAddOrEdit.aspx.cs" Inherits="Administrator_Views_CategoryAddOrEdit" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrator/Views/Admin.master" AutoEventWireup="true" CodeFile="CategoryEdit.aspx.cs" Inherits="Administrator_Views_CategoryAddOrEdit" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="HeadExtension" runat="Server">
 </asp:Content>
@@ -15,18 +15,10 @@
             <label for="drlModule">Loại module &amp; thể loại cha</label>
         </div>
         <div class="col-md-3">
-            <select class="form-control" id="drlModule">
-                <option value="1">Bài viết</option>
-                <option value="2">Hình Ảnh và Video</option>
-                <option value="3">Khác</option>
-            </select>
+            <asp:DropDownList ID="drlModule" runat="server" CssClass="form-control"></asp:DropDownList>
         </div>
         <div class="col-md-3">
-            <select class="form-control" id="drlTheLoai">
-                <option value="1">Thiết kế website</option>
-                <option value="2">Tin tức và sự kiện</option>
-                <option value="3">Lập trình phần mềm</option>
-            </select>
+            <asp:DropDownList ID="drlTheLoai" runat="server" CssClass="form-control"></asp:DropDownList>
         </div>
     </div>
     <div class="row form-group">
@@ -66,7 +58,7 @@
 
     <div class="row form-group">
         <div class="col-md-3">
-           <%-- <label>Ảnh minh họa: </label>--%>
+            <%-- <label>Ảnh minh họa: </label>--%>
         </div>
         <div class="col-md-6">
             <div class="panel panel-default">
