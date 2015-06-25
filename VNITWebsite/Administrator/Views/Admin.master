@@ -1,0 +1,325 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin.master.cs" Inherits="Administrator_Views_Admin" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><%=Resources.Resource.AdminTitle %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="/Design/favicon.png" />
+
+    <%-- CSS for pages - SB Admin --%>
+    <link href="/Styles/Admin/SBAdmin/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Styles/Admin/SBAdmin/metisMenu.min.css" rel="stylesheet" />
+    <link href="/Styles/Admin/SBAdmin/sb-admin-2.css" rel="stylesheet" />
+    <link href="/Styles/Admin/SBAdmin/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/Styles/Admin/SBAdmin/morris.css" rel="stylesheet" />
+    <link href="/Styles/Admin/SBAdmin/timeline.css" rel="stylesheet" />
+    <link href="/Styles/Flags/flags.css" rel="stylesheet" />
+
+    <%-- Notification CSS --%>
+    <link href=" /Styles/Admin/VNITAdmin/notification.css" rel="stylesheet" />
+
+    <%-- Extension for html head --%>
+    <asp:ContentPlaceHolder ID="HeadExtension" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="AdminForm" runat="server" enctype="multipart/form-data">
+        <asp:ScriptManager ID="AdminScriptManager" runat="server"></asp:ScriptManager>
+
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/Administrator/Views/Default.aspx">
+                        <img src="/Design/logo2.png" alt="VNIT Logo" />
+                        <%=Resources.Resource.AdminHeadTitle %> </a>
+                </div>
+                <!-- /.navbar-header -->
+
+                <ul class="nav navbar-top-links navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void();">
+                            <i class="fa fa-envelope fa-fw"></i><i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-messages">
+                            <li>
+                                <a href="javascript:void();">
+                                    <div>
+                                        <strong>John Smith</strong>
+                                        <span class="pull-right text-muted">
+                                            <em>Yesterday</em>
+                                        </span>
+                                    </div>
+                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a class="text-center" href="javascript:void();">
+                                    <strong>Read All Messages</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-messages -->
+                    </li>
+                    <!-- /.dropdown -->
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void();">
+                            <i class="fa fa-bell fa-fw"></i><i class="fa fa-caret-down"></i>
+                        </a>
+                        <%-- <ul class="dropdown-menu dropdown-alerts">
+                        </ul>--%>
+                        <!-- /.dropdown-alerts -->
+                    </li>
+                    <!-- /.dropdown -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void();">
+                            <i class="fa fa-tasks fa-fw"></i><i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-tasks dropdown-lang">
+                            <li>
+                                <asp:LinkButton ID="HLEnglish" runat="server" OnClick="HLLanguage_Click" CommandArgument="en">
+                                    <div>
+                                        <i class="fa flag flag-us fa-fw"></i>&nbsp;English
+                                    </div>
+                                </asp:LinkButton>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <asp:LinkButton ID="HLVietnam" runat="server" OnClick="HLLanguage_Click" CommandArgument="vi">
+                                    <div>
+                                        <i class="fa flag flag-vn fa-fw"></i>&nbsp;Tiếng Việt
+                                    </div>
+                                </asp:LinkButton>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-tasks -->
+                    </li>
+                    <!-- /.dropdown -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void();">
+                            <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <asp:LinkButton ID="lbtUserProfile" runat="server">
+                                    <i class="fa fa-user fa-fw"></i>
+                                    <asp:Literal ID="ltrUserProfile" runat="server"></asp:Literal>
+                                </asp:LinkButton>
+                            </li>
+                            <li><a href="javascript:void();"><i class="fa fa-gear fa-fw"></i><%=Resources.Resource.Setting %></a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <asp:LinkButton ID="btnSingOut" runat="server" OnClick="btnSingOut_Click"><i class="fa fa-sign-out fa-fw"></i><%=Resources.Resource.Logout %></asp:LinkButton>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-user -->
+                    </li>
+                    <!-- /.dropdown -->
+
+                </ul>
+                <!-- /.navbar-top-links -->
+
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+                            <li class="sidebar-search">
+                                <div class="input-group custom-search-form">
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm ..." />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <!-- /input-group -->
+                            </li>
+                            <li>
+                                <a href="/Administrator/Views/Default.aspx"><i class="fa fa-th-large fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.HomePage %></a>
+                            </li>
+
+                            <%-- Manage Menu Catgory --%>
+                            <li>
+                                <a href="CategoryList.aspx"><i class="fa fa-list-alt fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuCatManage %><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="CategoryList.aspx"><i class="fa fa-tasks fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuCatList %></a>
+                                    </li>
+                                    <li>
+                                        <a href="CategoryAddOrEdit.aspx?ID=0"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuCatAdd %></a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+
+                            <%-- Manage Article --%>
+                            <li>
+                                <a href="javascript:void();"><i class="fa fa-file-text-o fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.ArticleManage %><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="javascript:void();"><i class="fa fa-files-o fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.ArtileList %></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void();"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.ArticleAdd %></a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+
+                            <%-- Manage Menu --%>
+                            <li>
+                                <a href="javascript:void();"><i class="fa fa-navicon fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuManage %><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="javascript:void();"><i class="fa fa-tasks fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuList %></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void();"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuAdd %></a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+
+
+                            <%-- Manage Video --%>
+                            <li>
+                                <a href="javascript:void();"><i class="fa fa-video-camera fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.VideoManage %><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="javascript:void();"><i class="fa fa-file-video-o fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.VideoList %></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void();"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.VideoAdd %></a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+
+                            <%-- Manage Gallery --%>
+                            <li>
+                                <a href="javascript:void();"><i class="fa fa-image fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.GalleryManage %><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="javascript:void();"><i class="fa fa-credit-card fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.GalleryList %></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void();"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.GalleryAdd %></a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+
+                            <%-- Manage Slideshow --%>
+                            <li>
+                                <a href="javascript:void();"><i class="fa fa-star-half-o fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.SlideShowManage %></a>
+                            </li>
+                            <%-- Manage Contact Letter--%>
+                            <li>
+                                <a href="javascript:void();"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.ContactLetter %></a>
+                            </li>
+                            <%-- Manage Support Infomation --%>
+                            <li>
+                                <a href="javascript:void();"><i class="fa fa-phone fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.CustomerSuport %></a>
+                            </li>
+                            <%-- Manage User Login --%>
+                            <li>
+                                <a href="javascript:void();"><i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.UserManage %><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="javascript:void();"><i class="fa fa-group fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.UserList %></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void();"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.UserAdd %></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void();"><i class="fa fa-bullhorn fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.UserLoginAction %></a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                            <%-- Go to website front page --%>
+                            <li>
+                                <a href="javascript:void();"><i class="fa fa-globe fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.GoToWebsite %></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>
+                <!-- /.navbar-static-side -->
+            </nav>
+
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading head-title">
+                            <i class="fa fa-external-link fa-fw"></i>
+                            <%-- Main Content Place Holder  --%>
+                            <asp:ContentPlaceHolder ID="FunctionTitlePlaceHolder" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                        <div class="panel-heading head-breadrum breadcrumb">
+                            <asp:ContentPlaceHolder ID="BreadrumPlaceHolder" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <%-- Main Content PlaceHolder  --%>
+                            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /javascript:void();page-wrapper -->
+
+        </div>
+
+        <%-- Hiển thị notification loading khi thực hiện thao thác --%>
+        <div id="ajax-loadingbar">
+            <img src="/Design/ajax-loader.gif" alt="Please wait" />
+            <span>Vui lòng đợi...</span>
+        </div>
+        <%-- Hiển thị notification message khi thực hiện thao thác --%>
+        <div id="notice-bar" class="success">
+            <i class="fa fa-info-circle"></i>&nbsp;&nbsp;&nbsp;<span></span>
+        </div>
+        <div class="hide">
+            <input type="reset" id="btn-reset-form" />
+        </div>
+
+    </form>
+
+    <%-- Javascript Jquery - SBAdmin --%>
+    <script src="/Styles/Admin/SBAdmin/jquery.min.js"></script>
+    <script src="/Styles/Admin/SBAdmin/bootstrap.min.js"></script>
+    <script src="/Styles/Admin/SBAdmin/metisMenu.min.js"></script>
+    <script src="/Styles/Admin/SBAdmin/sb-admin-2.js"></script>
+    <script src="/Styles/Admin/SBAdmin/morris.min.js"></script>
+    <script src="/Styles/Admin/SBAdmin/raphael-min.js"></script>
+    <script src="/Styles/Admin/SBAdmin/morris-data.js"></script>
+
+    <%-- Notification Jquery --%>
+    <script src="/Styles/Admin/VNITAdmin/notification.js"></script>
+
+    <%-- Extension for Jquery --%>
+    <asp:ContentPlaceHolder ID="FootExtension" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+</html>

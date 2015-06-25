@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VNITDatabaseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Figure" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Summary" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreteDdate" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Creator" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateDate" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Updator" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="View" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="HomePage" Type="Boolean" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Article_Category" FromRole="Article" ToRole="Category" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="Figure" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Order" Type="Int32" />
+    <NavigationProperty Name="Articles" Relationship="Self.FK_Article_Category" FromRole="Category" ToRole="Article" />
+    <NavigationProperty Name="Category1" Relationship="Self.FK_Category_Category" FromRole="Category" ToRole="Category1" />
+    <NavigationProperty Name="Category2" Relationship="Self.FK_Category_Category" FromRole="Category1" ToRole="Category" />
+    <NavigationProperty Name="CategoryPosition" Relationship="Self.FK_Category_CategoryPosition" FromRole="Category" ToRole="CategoryPosition" />
+    <NavigationProperty Name="Module" Relationship="Self.FK_Category_Module" FromRole="Category" ToRole="Module" />
+  </EntityType>
+  <EntityType Name="CategoryPosition">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Categories" Relationship="Self.FK_Category_CategoryPosition" FromRole="CategoryPosition" ToRole="Category" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fullname" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SentDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ImageAndClip">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Creator" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateDate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Updator" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="View" Type="Int32" />
+    <Property Name="Figure" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ImageOrClip" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LangName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Translates" Relationship="Self.FK_Translate_Language" FromRole="Language" ToRole="Translate" />
+    <Property Name="LangCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Time" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IPAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MACCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="LoginActions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserLogin" Relationship="Self.FK_Login_UserLogin" FromRole="Login" ToRole="UserLogin" />
+  </EntityType>
+  <EntityType Name="Module">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ModuleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Order" Type="Int32" />
+    <NavigationProperty Name="Categories" Relationship="Self.FK_Category_Module" FromRole="Module" ToRole="Category" />
+    <NavigationProperty Name="Translates" Relationship="Self.FK_Translate_Module" FromRole="Module" ToRole="Translate" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Authority" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRole_Role" FromRole="Role" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="SlideShow">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Figure" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="Order" Type="Int32" />
+    <Property Name="DisplayPlace" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Support">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Other" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="principal_id" Nullable="false" Type="Int32" />
+    <Property Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" MaxLength="Max" FixedLength="false" Type="Binary" />
+  </EntityType>
+  <EntityType Name="Translate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ModuleItemID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleItemField" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Translate1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraInfo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Language" Relationship="Self.FK_Translate_Language" FromRole="Translate" ToRole="Language" />
+    <NavigationProperty Name="Module" Relationship="Self.FK_Translate_Module" FromRole="Translate" ToRole="Module" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserFullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Regency" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDay" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserLogin" Relationship="Self.FK_UserInfo_UserLogin" FromRole="UserInfo" ToRole="UserLogin" />
+  </EntityType>
+  <EntityType Name="UserLogin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Pass" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Logins" Relationship="Self.FK_Login_UserLogin" FromRole="UserLogin" ToRole="Login" />
+    <NavigationProperty Name="UserInfoes" Relationship="Self.FK_UserInfo_UserLogin" FromRole="UserLogin" ToRole="UserInfo" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRole_UserLogin" FromRole="UserLogin" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_UserRole_Role" FromRole="UserRole" ToRole="Role" />
+    <NavigationProperty Name="UserLogin" Relationship="Self.FK_UserRole_UserLogin" FromRole="UserRole" ToRole="UserLogin" />
+  </EntityType>
+  <Association Name="FK_Article_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Category_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Category1" Type="Self.Category" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Category_CategoryPosition">
+    <End Role="CategoryPosition" Type="Self.CategoryPosition" Multiplicity="0..1" />
+    <End Role="Category" Type="Self.Category" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Category_Module">
+    <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+    <End Role="Category" Type="Self.Category" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Translate_Language">
+    <End Role="Language" Type="Self.Language" Multiplicity="1" />
+    <End Role="Translate" Type="Self.Translate" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Login_UserLogin">
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
+    <End Role="Login" Type="Self.Login" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Translate_Module">
+    <End Role="Module" Type="Self.Module" Multiplicity="1" />
+    <End Role="Translate" Type="Self.Translate" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_UserRole_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_UserInfo_UserLogin">
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_UserRole_UserLogin">
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="VNITDatabaseEntities">
+    <EntitySet Name="Articles" EntityType="Self.Article" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="CategoryPositions" EntityType="Self.CategoryPosition" />
+    <EntitySet Name="Contacts" EntityType="Self.Contact" />
+    <EntitySet Name="ImageAndClips" EntityType="Self.ImageAndClip" />
+    <EntitySet Name="Languages" EntityType="Self.Language" />
+    <EntitySet Name="Logins" EntityType="Self.Login" />
+    <EntitySet Name="Modules" EntityType="Self.Module" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="SlideShows" EntityType="Self.SlideShow" />
+    <EntitySet Name="Supports" EntityType="Self.Support" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Translates" EntityType="Self.Translate" />
+    <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
+    <EntitySet Name="UserLogins" EntityType="Self.UserLogin" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+    <AssociationSet Name="FK_Article_Category" Association="Self.FK_Article_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Article" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Category_Category" Association="Self.FK_Category_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Category1" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Category_CategoryPosition" Association="Self.FK_Category_CategoryPosition">
+      <End Role="CategoryPosition" EntitySet="CategoryPositions" />
+      <End Role="Category" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Category_Module" Association="Self.FK_Category_Module">
+      <End Role="Module" EntitySet="Modules" />
+      <End Role="Category" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Translate_Language" Association="Self.FK_Translate_Language">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="Translate" EntitySet="Translates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Login_UserLogin" Association="Self.FK_Login_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="Login" EntitySet="Logins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Translate_Module" Association="Self.FK_Translate_Module">
+      <End Role="Module" EntitySet="Modules" />
+      <End Role="Translate" EntitySet="Translates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_Role" Association="Self.FK_UserRole_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_UserLogin" Association="Self.FK_UserInfo_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="UserInfo" EntitySet="UserInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_UserLogin" Association="Self.FK_UserRole_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+    <EntitySet Name="Configs" EntityType="VNITDatabaseModel.Config" />
+  </EntityContainer>
+  <EntityType Name="Config">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ConfigName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ConfigValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraNote" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

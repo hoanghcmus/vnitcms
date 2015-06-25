@@ -1,0 +1,6 @@
+G:\MyDotNetCMS\VNITCMS\DOTNET3.5_WEBFORM_ENTITY4\VNITLibrary\bin\Debug\VNITLibrary.dll.config
+G:\MyDotNetCMS\VNITCMS\DOTNET3.5_WEBFORM_ENTITY4\VNITLibrary\bin\Debug\VNITLibrary.dll
+G:\MyDotNetCMS\VNITCMS\DOTNET3.5_WEBFORM_ENTITY4\VNITLibrary\bin\Debug\VNITLibrary.pdb
+G:\MyDotNetCMS\VNITCMS\DOTNET3.5_WEBFORM_ENTITY4\VNITLibrary\obj\Debug\VNITLibrary.csprojResolveAssemblyReference.cache
+G:\MyDotNetCMS\VNITCMS\DOTNET3.5_WEBFORM_ENTITY4\VNITLibrary\obj\Debug\VNITLibrary.dll
+G:\MyDotNetCMS\VNITCMS\DOTNET3.5_WEBFORM_ENTITY4\VNITLibrary\obj\Debug\VNITLibrary.pdb
