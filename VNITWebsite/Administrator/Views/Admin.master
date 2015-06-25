@@ -158,7 +158,7 @@
                                         <a href="CategoryList.aspx"><i class="fa fa-tasks fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuCatList %></a>
                                     </li>
                                     <li>
-                                        <a href="CategoryAddOrEdit.aspx?ID=0"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuCatAdd %></a>
+                                        <a href="CategoryEdit.aspx?ID=0"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuCatAdd %></a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->

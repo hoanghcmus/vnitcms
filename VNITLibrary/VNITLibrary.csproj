@@ -66,7 +66,10 @@
     <Compile Include="VNITObjects\CategoryModel.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="VNITObjects\MenuModel.cs" />
+    <Compile Include="VNITObjects\FilterParams.cs" />
+    <Compile Include="VNITObjects\MenuModel.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="VNITObjects\MenuPositionModel.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
