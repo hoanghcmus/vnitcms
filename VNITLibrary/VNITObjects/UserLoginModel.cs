@@ -7,7 +7,7 @@ using VNITLibrary.VNITUtilitiess;
 
 namespace VNITLibrary.VNITObjects
 {
-    public partial class UserLogin : BasePage
+    public partial class UserLoginModel : BasePage
     {
         public static VNITLibrary.VNITDatabase.UserLogin FindUser(string user, string pass)
         {

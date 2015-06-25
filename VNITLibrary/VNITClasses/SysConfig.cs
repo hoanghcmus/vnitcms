@@ -9,9 +9,9 @@ namespace VNITLibrary.VNITClasses
 {
     class SysConfig
     {
-        public static List<Config> GetAll()
+        public static List<ConfigModel> GetAll()
         {
-            var t = new List<Config>();
+            var t = new List<ConfigModel>();
             return t;
         }
         private static string GetStringValue(int configID){                    

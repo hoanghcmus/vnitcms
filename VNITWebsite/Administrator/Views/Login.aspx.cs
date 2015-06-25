@@ -15,7 +15,7 @@ public partial class Administrator_Views_Login : BasePage
     }
     protected void btnLogin_Click(object sender, EventArgs e)
     {
-        var user = UserLogin.FindUser(txtUser.Text.Trim(), txtPass.Text.Trim());
+        var user = UserLoginModel.FindUser(txtUser.Text.Trim(), txtPass.Text.Trim());
         if (user != null)
         {
             GlobalVariables.CurrentUser = user;

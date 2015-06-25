@@ -6,7 +6,7 @@ using VNITLibrary.VNITClasses;
 
 namespace VNITLibrary.VNITObjects
 {
-    public partial class Module : BasePage
+    public partial class ModuleModel : BasePage
     {
     }
 }

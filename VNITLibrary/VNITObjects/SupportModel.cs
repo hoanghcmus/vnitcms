@@ -8,7 +8,7 @@ using VNITLibrary.VNITDatabase;
 
 namespace VNITLibrary.VNITObjects
 {
-    public partial class Support : BasePage
+    public partial class SupportModel : BasePage
     {
         public string createNewObjAndShow(string name, string phone)
         {

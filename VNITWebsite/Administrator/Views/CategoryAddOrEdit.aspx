@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <%--<div class="row form-group">
+    <div class="row form-group">
         <div class="col-md-3">
             <label for="<%=txtFigure.ClientID %>">Ảnh minh họa</label>
         </div>
@@ -55,24 +55,24 @@
             <div class="input-group">
                 <asp:TextBox runat="server" ID="txtFigure" CssClass="form-control" placeholder="Chọn ảnh từ thư viện hoặc từ liên kết ngoài..."></asp:TextBox>
                 <span class="input-group-btn">
-                    <a href="javascript:BrowseServer( 'Images:/','<%=txtFigure.ClientID %>');" class="btn btn-default">
+                    <a href="javascript:BroewseFiles( 'Images:/');" class="btn btn-default">
+                        <%--<a href="javascript:BrowseServer( 'Images:/','<%=txtFigure.ClientID %>');" class="btn btn-default">--%>
                         <i class="fa fa-folder-open"></i>
-                    </a>
-                </span>
+                    </a></span>
             </div>
         </div>
-    </div>--%>
+    </div>
 
 
     <div class="row form-group">
         <div class="col-md-3">
-            <label>Ảnh minh họa: </label>
+           <%-- <label>Ảnh minh họa: </label>--%>
         </div>
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div id="sthumb-container"></div>
-                    <div class="sthumb add"><a href="javascript:BroewseFiles( 'Images:/');" class="btn btn-success">+</a></div>
+                    <div class="sthumb add"><a href="javascript:BroewseFiles( 'Images:/');" class="btn btn-success hide">+</a></div>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -109,6 +109,7 @@
         }
 
         function CreatePreviewImage(fileUrl, data) {
+            $('#<%=txtFigure.ClientID %>').val(fileUrl);
             var txtImgs = $("#<%=txtOptionalImages.ClientID%>");
             appendSthumb(fileUrl);
             if (txtImgs.val() == "") txtImgs.val(fileUrl);
@@ -143,6 +144,17 @@
             }
             txtImgs.val(imgPaths);
             sthumb.remove();
+        });
+
+        $("#<%=txtFigure.ClientID %>").bind("enterKey", function (e) {
+            var imgsrc = $("#<%=txtFigure.ClientID %>").val();
+            if (imgsrc != "") appendSthumb(imgsrc);
+        });
+
+        $("#<%=txtFigure.ClientID %>").keyup(function (e) {
+            if (e.keyCode == 13) {
+                $(this).trigger("enterKey");
+            }
         });
 
     </script>

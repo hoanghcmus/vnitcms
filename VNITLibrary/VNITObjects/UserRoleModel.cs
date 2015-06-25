@@ -6,7 +6,7 @@ using VNITLibrary.VNITClasses;
 
 namespace VNITLibrary.VNITObjects
 {
-    public partial class UserInfo : BasePage
+    public partial class UserRoleModel : BasePage
     {
     }
 }
