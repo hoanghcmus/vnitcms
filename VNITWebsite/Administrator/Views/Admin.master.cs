@@ -4,15 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using VNITLibrary.VNITClasses;
-using VNITLibrary.VNITDatabase;
-using VNITLibrary.VNITUtilitiess;
+using VNITLibrary;
 
 public partial class Administrator_Views_Admin : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       // CheckLogin();
+        // CheckLogin();
         //ltrUserProfile.Text = StringUltil.UCFirst(GlobalVariables.CurrentUser.User.ToString());
     }
     protected void HLLanguage_Click(object sender, EventArgs e)

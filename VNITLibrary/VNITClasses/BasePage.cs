@@ -8,7 +8,7 @@ using System.Web.Script.Serialization;
 using System.Web.UI;
 using VNITLibrary.VNITDatabase;
 
-namespace VNITLibrary.VNITClasses
+namespace VNITLibrary
 {
     public class BasePage : Page
     {
@@ -16,9 +16,9 @@ namespace VNITLibrary.VNITClasses
         protected JavaScriptSerializer JsSerializer = new JavaScriptSerializer();
 
         protected override void InitializeCulture()
-        {           
+        {
             string sLang = Convert.ToString(Session["lang"]);
-            string culture = VNITClasses.Culture.GetCulture(sLang);
+            string culture = VNITLibrary.Culture.GetCulture(sLang);
             /*** 
              * Set Culture for current Thread
              ***/

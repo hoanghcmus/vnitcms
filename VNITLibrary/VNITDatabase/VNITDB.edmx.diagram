@@ -4,34 +4,34 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0e9b49d02af64fae8200a9e38562c0ef" Name="VNITDiagram" ShowGrid="false" SnapToGrid="true" DisplayType="false">
+      <Diagram DiagramId="0e9b49d02af64fae8200a9e38562c0ef" Name="VNITDiagram" ShowGrid="false" SnapToGrid="true" DisplayType="false" ZoomLevel="83">
         <EntityTypeShape EntityType="VNITDatabaseModel.Article" Width="1.5" PointX="2.25" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="VNITDatabaseModel.Category" Width="1.5" PointX="0.5" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="VNITDatabaseModel.CategoryPosition" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="VNITDatabaseModel.Contact" Width="1.5" PointX="2.125" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="VNITDatabaseModel.ImageAndClip" Width="1.5" PointX="0.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNITDatabaseModel.Contact" Width="1.5" PointX="2.125" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNITDatabaseModel.ImageAndClip" Width="1.5" PointX="0.5" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="VNITDatabaseModel.Language" Width="1.5" PointX="2.25" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VNITDatabaseModel.Login" Width="1.5" PointX="6.625" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="VNITDatabaseModel.Module" Width="1.5" PointX="3.875" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="VNITDatabaseModel.Role" Width="1.5" PointX="8.625" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="VNITDatabaseModel.SlideShow" Width="1.5" PointX="3.75" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="VNITDatabaseModel.Support" Width="1.5" PointX="5.375" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="VNITDatabaseModel.sysdiagram" PointX="7" PointY="8.25" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNITDatabaseModel.SlideShow" Width="1.5" PointX="3.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNITDatabaseModel.Support" Width="1.5" PointX="5.375" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNITDatabaseModel.sysdiagram" PointX="7" PointY="9.375" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VNITDatabaseModel.Translate" Width="1.5" PointX="4" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VNITDatabaseModel.UserInfo" Width="1.5" PointX="8.625" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VNITDatabaseModel.UserLogin" Width="1.5" PointX="6.5" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VNITDatabaseModel.UserRole" Width="1.5" PointX="8.625" PointY="2.75" IsExpanded="true" />
-        <AssociationConnector Association="VNITDatabaseModel.FK_Article_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="VNITDatabaseModel.FK_Category_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="VNITDatabaseModel.FK_Category_CategoryPosition" ManuallyRouted="false" />
-        <AssociationConnector Association="VNITDatabaseModel.FK_Category_Module" ManuallyRouted="false" />
         <AssociationConnector Association="VNITDatabaseModel.FK_Translate_Language" ManuallyRouted="false" />
         <AssociationConnector Association="VNITDatabaseModel.FK_Login_UserLogin" ManuallyRouted="false" />
         <AssociationConnector Association="VNITDatabaseModel.FK_Translate_Module" ManuallyRouted="false" />
         <AssociationConnector Association="VNITDatabaseModel.FK_UserRole_Role" ManuallyRouted="false" />
         <AssociationConnector Association="VNITDatabaseModel.FK_UserInfo_UserLogin" ManuallyRouted="false" />
         <AssociationConnector Association="VNITDatabaseModel.FK_UserRole_UserLogin" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="VNITDatabaseModel.Config" Width="1.5" PointX="8.625" PointY="8.375" />
+        <EntityTypeShape EntityType="VNITDatabaseModel.Config" Width="1.5" PointX="8.625" PointY="9.5" />
+        <EntityTypeShape EntityType="VNITDatabaseModel.Menu" Width="1.5" PointX="6.625" PointY="6.25" />
+        <EntityTypeShape EntityType="VNITDatabaseModel.MenuPosition" Width="1.5" PointX="4.75" PointY="7.125" />
+        <AssociationConnector Association="VNITDatabaseModel.FK_Menu_MenuPosition" />
+        <EntityTypeShape EntityType="VNITDatabaseModel.Category" Width="1.5" PointX="0.5" PointY="3.375" />
+        <AssociationConnector Association="VNITDatabaseModel.FK_Article_Category" />
+        <AssociationConnector Association="VNITDatabaseModel.FK_Category_Module" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

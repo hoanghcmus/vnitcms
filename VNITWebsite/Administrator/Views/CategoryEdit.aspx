@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrator/Views/Admin.master" AutoEventWireup="true" CodeFile="CategoryEdit.aspx.cs" Inherits="Administrator_Views_CategoryAddOrEdit" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrator/Views/Admin.master" AutoEventWireup="true" CodeFile="CategoryEdit.aspx.cs" Inherits="CategoryEdit" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="HeadExtension" runat="Server">
 </asp:Content>
@@ -9,6 +9,7 @@
 
     <a href="javascript:void();">Trang chủ</a> &raquo; <a href="javascript:void();">Thể loại</a> &raquo; <a href="javascript:void();" class="active">Thêm thể loại mới</a>
 </asp:Content>
+
 <asp:Content ID="Main" ContentPlaceHolderID="MainContent" runat="Server">
     <div class="row form-group">
         <div class="col-md-3">

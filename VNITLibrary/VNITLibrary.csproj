@@ -92,6 +92,7 @@
     <Compile Include="VNITObjects\RoleModel.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="VNITObjects\ServerMessage.cs" />
     <Compile Include="VNITObjects\SlideShowModel.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

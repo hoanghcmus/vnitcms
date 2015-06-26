@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 #endregion
 
-namespace VNITLibrary.VNITControls
+namespace VNITLibrary
 {
     [ToolboxData("<{0}:AdminPager runat=\"server\"></{0}:AdminPager>")]
     public class AdminPager : WebControl, IPostBackEventHandler, INamingContainer

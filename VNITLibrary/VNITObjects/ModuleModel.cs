@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using VNITLibrary.VNITClasses;
 using VNITLibrary.VNITDatabase;
 
-namespace VNITLibrary.VNITObjects
+namespace VNITLibrary
 {
     public partial class ModuleModel : BasePage
     {

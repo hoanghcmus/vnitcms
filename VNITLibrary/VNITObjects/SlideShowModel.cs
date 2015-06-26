@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using VNITLibrary.VNITClasses;
 
-namespace VNITLibrary.VNITObjects
+namespace VNITLibrary
 {
     public partial class SlideShowModel : BasePage
     {

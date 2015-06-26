@@ -4,8 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using VNITLibrary.VNITClasses;
-using VNITLibrary.VNITObjects;
+using VNITLibrary;
 
 public partial class Administrator_Views_Login : BasePage
 {
