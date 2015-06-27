@@ -17,27 +17,38 @@ namespace VNITLibrary
             }
         }
 
-        public static List<Category> GetMultiLevelList(int parentID, int excludeItemId, DropDownList drl)
+        public static Category GetByID(int id)
         {
-            var categories = GetAll().Where(o => o.ParentID == parentID && o.ID != excludeItemId);
+            return GetAll().Where(o => o.ID == id).FirstOrDefault();
+        }
+
+        public static List<Category> GetMultiLevelList(int parentID, int excludeItemId, ref  List<Category> lc, int count)
+        {
+            var categories = GetAll().Where(o => o.ParentID == parentID);
             if (categories.Count() != 0)
             {
                 foreach (var catItem in categories)
                 {
+                    var c = new Category();
+                    c.ID = catItem.ID;
+                    c.Title = catItem.Title;
                     if (HasChild(catItem.ID))
                     {
-                        drl.Items.Add(new ListItem(GetMenuLevelString(count) + ShowTitle(theLoai.TieuDe_Vn), theLoai.ID.ToString()));
-                        count += 1;
-                        GetMultiLevelList(theLoai.ID, count);
-                        count -= 1;
+                        c.Title = GetMenuLevelString(count) + c.Title;
+                        lc.Add(c);
+                        ++count;
+                        GetMultiLevelList(catItem.ID, excludeItemId, ref lc, count);
+                        --count;
                     }
                     else
                     {
-                        if (theLoai.IDParent != null && theLoai.IDParent > 0)
-                            drl.Items.Add(new ListItem(GetMenuLevelString(count) + ShowTitle(theLoai.TieuDe_Vn), theLoai.ID.ToString()));
+                        if (catItem.ParentID != null && catItem.ParentID > 0)
+                        {
+                            c.Title = GetMenuLevelString(count) + c.Title;
+                            lc.Add(c);
+                        }
                         else
-                            drl.Items.Add(new ListItem(ShowTitle(theLoai.TieuDe_Vn), theLoai.ID.ToString()));
-
+                            lc.Add(c);
                     }
                 }
             }
@@ -60,5 +71,14 @@ namespace VNITLibrary
             return ls;
         }
 
+        public static int GetModuleID(Category c)
+        {
+            return (int)c.ModuleReference.EntityKey.EntityKeyValues[0].Value;
+        }
+        public static int GetModuleID(int id)
+        {
+            return (int)GetAll().Where(o => o.ID == id).FirstOrDefault().ModuleReference.EntityKey.EntityKeyValues[0].Value;
+        }
+       
     }
 }

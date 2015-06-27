@@ -8,89 +8,101 @@
 <asp:Content ID="Breadrum" runat="server" ContentPlaceHolderID="BreadrumPlaceHolder">
 
     <a href="javascript:void();">Trang chủ</a> &raquo; <a href="javascript:void();">Thể loại</a> &raquo; <a href="javascript:void();" class="active">Thêm thể loại mới</a>
+
 </asp:Content>
 
 <asp:Content ID="Main" ContentPlaceHolderID="MainContent" runat="Server">
-    <div class="row form-group">
-        <div class="col-md-3">
-            <label for="drlModule">Loại module &amp; thể loại cha</label>
-        </div>
-        <div class="col-md-3">
-            <asp:DropDownList ID="drlModule" runat="server" CssClass="form-control"></asp:DropDownList>
-        </div>
-        <div class="col-md-3">
-            <asp:DropDownList ID="drlTheLoai" runat="server" CssClass="form-control"></asp:DropDownList>
-        </div>
-    </div>
-    <div class="row form-group">
-        <div class="col-md-3">
-            <label for="<%=txtTitle.ClientID %>">Tiêu đề</label>
-        </div>
-        <div class="col-md-6">
-            <asp:TextBox runat="server" ID="txtTitle" CssClass="form-control" placeholder="Nhập tiêu đề"></asp:TextBox>
-        </div>
-    </div>
 
-    <div class="row form-group">
-        <div class="col-md-3">
-            <label for="<%=txtDescription.ClientID %>">Mô tả</label>
-        </div>
-        <div class="col-md-6">
-            <asp:TextBox ID="txtDescription" runat="server" TextMode="MultiLine" placeholder="Nhập mô tả" CssClass="form-control"></asp:TextBox>
-        </div>
-    </div>
+    <asp:UpdatePanel ID="CatEditUpdatePanel" runat="server">
+        <ContentTemplate>
 
-    <div class="row form-group">
-        <div class="col-md-3">
-            <label for="<%=txtFigure.ClientID %>">Ảnh minh họa</label>
-        </div>
-        <div class="col-md-6">
-            <div class="input-group">
-                <asp:TextBox runat="server" ID="txtFigure" CssClass="form-control" placeholder="Chọn ảnh từ thư viện hoặc từ liên kết ngoài..."></asp:TextBox>
-                <span class="input-group-btn">
-                    <a href="javascript:BroewseFiles( 'Images:/');" class="btn btn-default">
-                        <%--<a href="javascript:BrowseServer( 'Images:/','<%=txtFigure.ClientID %>');" class="btn btn-default">--%>
-                        <i class="fa fa-folder-open"></i>
-                    </a></span>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="row form-group">
-        <div class="col-md-3">
-            <%-- <label>Ảnh minh họa: </label>--%>
-        </div>
-        <div class="col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div id="sthumb-container"></div>
-                    <div class="sthumb add"><a href="javascript:BroewseFiles( 'Images:/');" class="btn btn-success hide">+</a></div>
-                    <div class="clearfix"></div>
+            <div class="row form-group">
+                <div class="col-md-3">
+                    <label for="drlModule">Loại module &amp; thể loại cha</label>
+                </div>
+                <div class="col-md-3">
+                    <asp:DropDownList ID="drlModule" runat="server" CssClass="form-control"></asp:DropDownList>
+                </div>
+                <div class="col-md-3">
+                    <asp:DropDownList ID="drlTheLoai" runat="server" CssClass="form-control"></asp:DropDownList>
                 </div>
             </div>
-        </div>
-        <asp:TextBox runat="server" ID="txtOptionalImages" CssClass="hide"></asp:TextBox>
-    </div>
+            <div class="row form-group">
+                <div class="col-md-3">
+                    <label for="<%=txtTitle.ClientID %>">Tiêu đề</label>
+                </div>
+                <div class="col-md-6">
+                    <asp:TextBox runat="server" ID="txtTitle" CssClass="form-control" placeholder="Nhập tiêu đề"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-3">
+                    <label for="<%=txtDescription.ClientID %>">Mô tả</label>
+                </div>
+                <div class="col-md-6">
+                    <asp:TextBox ID="txtDescription" runat="server" TextMode="MultiLine" placeholder="Nhập mô tả" CssClass="form-control"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-3">
+                    <label for="<%=txtFigure.ClientID %>">Ảnh minh họa</label>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <asp:TextBox runat="server" ID="txtFigure" CssClass="form-control" placeholder="Chọn ảnh từ thư viện hoặc từ liên kết ngoài..."></asp:TextBox>
+                        <span class="input-group-btn">
+                            <a href="javascript:BroewseFiles( 'Images:/');" class="btn btn-default">
+                                <%--<a href="javascript:BrowseServer( 'Images:/','<%=txtFigure.ClientID %>');" class="btn btn-default">--%>
+                                <i class="fa fa-folder-open"></i>
+                            </a></span>
+                    </div>
+                </div>
+            </div>
 
 
-    <div class="row form-group">
-        <div class="col-md-6">
-        </div>
-        <div class="col-md-3">
-            <asp:LinkButton runat="server" ID="btnSaveItem" CssClass="btn btn-primary btn-block" Text="Lưu lại"></asp:LinkButton>
-        </div>
-    </div>
+            <div class="row form-group">
+                <div class="col-md-3">
+                    <%-- <label>Ảnh minh họa: </label>--%>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="sthumb-container"></div>
+                            <div class="sthumb add"><a href="javascript:BroewseFiles( 'Images:/');" class="btn btn-success hide">+</a></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <asp:TextBox runat="server" ID="txtListImgs" CssClass="hide"></asp:TextBox>
+            </div>
 
-    <div class="row form-group">
-        <div class="col-md-6">
-            <span class="label label-success pull-left hide" style="padding: 5px;">Thông báo ở đây</span>
-        </div>
-    </div>
+
+            <div class="row form-group">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-3">
+                    <asp:LinkButton runat="server" ID="btnSaveItem" CssClass="btn btn-primary btn-block" Text="Lưu lại" OnClick="btnSaveItem_Click"></asp:LinkButton>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-6">
+                    <span class="label label-success pull-left hide" style="padding: 5px;">Thông báo ở đây</span>
+                </div>
+            </div>
+
+        </ContentTemplate>
+    </asp:UpdatePanel>
+
 </asp:Content>
+
 <asp:Content ID="Foot" ContentPlaceHolderID="FootExtension" runat="Server">
+
     <script src="/Editors/ckfinder/popup.js"></script>
     <script src="/Editors/ckfinder/ckfinder.js"></script>
+
     <%-- Jquery for Update panel animation --%>
     <script src="/Styles/Admin/VNITAdmin/updatepanel.helper.js"></script>
 
@@ -103,7 +115,7 @@
 
         function CreatePreviewImage(fileUrl, data) {
             $('#<%=txtFigure.ClientID %>').val(fileUrl);
-            var txtImgs = $("#<%=txtOptionalImages.ClientID%>");
+            var txtImgs = $("#<%=txtListImgs.ClientID%>");
             appendSthumb(fileUrl);
             if (txtImgs.val() == "") txtImgs.val(fileUrl);
             else txtImgs.val(txtImgs.val() + ";" + fileUrl);
@@ -115,16 +127,17 @@
         }
 
         function createImgBar() {
-            var txtImgs = $("#<%=txtOptionalImages.ClientID%>");
+            var txtImgs = $("#<%=txtListImgs.ClientID%>");
             var imgs = txtImgs.val().split(";");
             for (var i = 0; i < imgs.length; i++) {
                 if (imgs[i] != "") appendSthumb(imgs[i]);
             }
         }
-
+      
+        createImgBar();
 
         $(document).on("click", ".sthumb > a.del", function () {
-            var txtImgs = $("#<%=txtOptionalImages.ClientID%>");
+            var txtImgs = $("#<%=txtListImgs.ClientID%>");
             var sthumb = $(this).parent();
             var imgPath = sthumb.find("img").attr("src");
             var imgPaths = txtImgs.val();
@@ -139,7 +152,7 @@
             sthumb.remove();
         });
 
-        $("#<%=txtFigure.ClientID %>").bind("enterKey", function (e) {
+            $("#<%=txtFigure.ClientID %>").bind("enterKey", function (e) {
             var imgsrc = $("#<%=txtFigure.ClientID %>").val();
             if (imgsrc != "") appendSthumb(imgsrc);
         });

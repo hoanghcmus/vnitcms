@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0e9b49d02af64fae8200a9e38562c0ef" Name="VNITDiagram" ShowGrid="false" SnapToGrid="true" DisplayType="false" ZoomLevel="83">
+      <Diagram DiagramId="0e9b49d02af64fae8200a9e38562c0ef" Name="VNITDiagram" ShowGrid="false" SnapToGrid="true" DisplayType="false" ZoomLevel="109">
         <EntityTypeShape EntityType="VNITDatabaseModel.Article" Width="1.5" PointX="2.25" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="VNITDatabaseModel.Contact" Width="1.5" PointX="2.125" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="VNITDatabaseModel.ImageAndClip" Width="1.5" PointX="0.5" PointY="8.25" IsExpanded="true" />
@@ -29,7 +29,7 @@
         <EntityTypeShape EntityType="VNITDatabaseModel.Menu" Width="1.5" PointX="6.625" PointY="6.25" />
         <EntityTypeShape EntityType="VNITDatabaseModel.MenuPosition" Width="1.5" PointX="4.75" PointY="7.125" />
         <AssociationConnector Association="VNITDatabaseModel.FK_Menu_MenuPosition" />
-        <EntityTypeShape EntityType="VNITDatabaseModel.Category" Width="1.5" PointX="0.5" PointY="3.375" />
+        <EntityTypeShape EntityType="VNITDatabaseModel.Category" Width="1.5" PointX="0.5" PointY="3.5" />
         <AssociationConnector Association="VNITDatabaseModel.FK_Article_Category" />
         <AssociationConnector Association="VNITDatabaseModel.FK_Category_Module" />
       </Diagram>

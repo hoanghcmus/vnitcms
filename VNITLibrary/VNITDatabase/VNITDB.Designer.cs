@@ -20,7 +20,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("VNITDatabaseModel", "FK_Category_Module", "Module", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(VNITLibrary.VNITDatabase.Module), "Category", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VNITLibrary.VNITDatabase.Category))]
 
 // Original file name:
-// Generation date: 26/6/2015 16:22:15
+// Generation date: 27/6/2015 13:51:57
 namespace VNITLibrary.VNITDatabase
 {
     
