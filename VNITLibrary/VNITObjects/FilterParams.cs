@@ -3,6 +3,7 @@
     public class FilterParams
     {
         public string KeyWord { get; set; }
+<<<<<<< HEAD
         public int ModuleId { get; set; }
         public int PostId { get; set; }
         public int CatId { get; set; }
@@ -21,10 +22,13 @@
         ***/
         public string ObjField { get; set; }
         public int LangID { get; set; }
+=======
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
 
         public FilterParams()
         {
             KeyWord = string.Empty;
+<<<<<<< HEAD
             ModuleId = 0;
             CatId = 0;
             Status = -1;
@@ -33,6 +37,8 @@
             ObjID = 0;
             ObjField = string.Empty;
             LangID = 0;
+=======
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
         }
     }
 }

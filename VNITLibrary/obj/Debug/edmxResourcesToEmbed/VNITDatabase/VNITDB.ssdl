@@ -1,10 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="VNITDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+<Schema Namespace="VNITDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+  <EntityContainer Name="VNITDatabaseModelStoreContainer">
+    <EntitySet Name="Article" EntityType="VNITDatabaseModel.Store.Article" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Category" EntityType="VNITDatabaseModel.Store.Category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Config" EntityType="VNITDatabaseModel.Store.Config" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Contact" EntityType="VNITDatabaseModel.Store.Contact" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ImageAndClip" EntityType="VNITDatabaseModel.Store.ImageAndClip" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Language" EntityType="VNITDatabaseModel.Store.Language" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Login" EntityType="VNITDatabaseModel.Store.Login" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Menu" EntityType="VNITDatabaseModel.Store.Menu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MenuPosition" EntityType="VNITDatabaseModel.Store.MenuPosition" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Module" EntityType="VNITDatabaseModel.Store.Module" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Role" EntityType="VNITDatabaseModel.Store.Role" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SlideShow" EntityType="VNITDatabaseModel.Store.SlideShow" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Support" EntityType="VNITDatabaseModel.Store.Support" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="VNITDatabaseModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Translate" EntityType="VNITDatabaseModel.Store.Translate" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserInfo" EntityType="VNITDatabaseModel.Store.UserInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserLogin" EntityType="VNITDatabaseModel.Store.UserLogin" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserRole" EntityType="VNITDatabaseModel.Store.UserRole" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Article_Category" Association="VNITDatabaseModel.Store.FK_Article_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Category_Module" Association="VNITDatabaseModel.Store.FK_Category_Module">
+      <End Role="Module" EntitySet="Module" />
+      <End Role="Category" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Login_UserLogin" Association="VNITDatabaseModel.Store.FK_Login_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogin" />
+      <End Role="Login" EntitySet="Login" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Menu_MenuPosition" Association="VNITDatabaseModel.Store.FK_Menu_MenuPosition">
+      <End Role="MenuPosition" EntitySet="MenuPosition" />
+      <End Role="Menu" EntitySet="Menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Translate_Language" Association="VNITDatabaseModel.Store.FK_Translate_Language">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="Translate" EntitySet="Translate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Translate_Module" Association="VNITDatabaseModel.Store.FK_Translate_Module">
+      <End Role="Module" EntitySet="Module" />
+      <End Role="Translate" EntitySet="Translate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_UserLogin" Association="VNITDatabaseModel.Store.FK_UserInfo_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogin" />
+      <End Role="UserInfo" EntitySet="UserInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_Role" Association="VNITDatabaseModel.Store.FK_UserRole_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_UserLogin" Association="VNITDatabaseModel.Store.FK_UserRole_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogin" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+  </EntityContainer>
   <EntityType Name="Article">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Title" Type="nvarchar" MaxLength="300" />
     <Property Name="Figure" Type="nvarchar" MaxLength="300" />
     <Property Name="Summary" Type="nvarchar" MaxLength="3000" />
@@ -22,7 +78,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Title" Type="nvarchar" MaxLength="200" />
     <Property Name="Description" Type="nvarchar" MaxLength="3000" />
     <Property Name="Figure" Type="nvarchar(max)" />
@@ -35,7 +91,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="ConfigName" Type="nvarchar" MaxLength="100" />
     <Property Name="ConfigValue" Type="ntext" />
     <Property Name="ExtraNote" Type="nvarchar" MaxLength="300" />
@@ -44,7 +100,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Fullname" Type="nvarchar" MaxLength="300" />
     <Property Name="Email" Type="nvarchar" MaxLength="300" />
     <Property Name="Address" Type="nvarchar" MaxLength="500" />
@@ -57,7 +113,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="nvarchar" MaxLength="300" />
     <Property Name="CreateDate" Type="nvarchar" MaxLength="100" />
     <Property Name="Creator" Type="nvarchar" MaxLength="100" />
@@ -73,7 +129,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="LangName" Type="nvarchar" MaxLength="100" />
     <Property Name="LangCode" Type="nchar" MaxLength="10" />
   </EntityType>
@@ -81,7 +137,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="UserID" Type="int" />
     <Property Name="Time" Type="nvarchar" MaxLength="100" />
     <Property Name="IPAddress" Type="nvarchar" MaxLength="100" />
@@ -93,7 +149,11 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
+<<<<<<< HEAD
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+=======
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
     <Property Name="Title" Type="nvarchar" MaxLength="200" />
     <Property Name="Description" Type="nvarchar" MaxLength="3000" />
     <Property Name="MenuIcon" Type="nvarchar" MaxLength="200" />
@@ -107,7 +167,11 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
+<<<<<<< HEAD
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+=======
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
     <Property Name="MenuName" Type="nvarchar" MaxLength="100" />
     <Property Name="Description" Type="nvarchar" MaxLength="300" />
   </EntityType>
@@ -115,8 +179,8 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ModuleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ModuleName" Type="nvarchar" Nullable="false" MaxLength="100" />
     <Property Name="Description" Type="nvarchar" MaxLength="100" />
     <Property Name="Order" Type="int" />
   </EntityType>
@@ -124,7 +188,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="300" />
     <Property Name="RoleName" Type="nvarchar" MaxLength="300" />
     <Property Name="Authority" Type="int" />
     <Property Name="Description" Type="nvarchar" MaxLength="3000" />
@@ -133,7 +197,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Title" Type="nvarchar" MaxLength="200" />
     <Property Name="Figure" Type="nvarchar" MaxLength="3000" />
     <Property Name="Description" Type="nvarchar" MaxLength="3000" />
@@ -144,7 +208,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="nvarchar" MaxLength="200" />
     <Property Name="Phone" Type="nvarchar" MaxLength="20" />
     <Property Name="Email" Type="nvarchar" MaxLength="100" />
@@ -154,9 +218,9 @@
     <Key>
       <PropertyRef Name="diagram_id" />
     </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
     <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
@@ -164,20 +228,26 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="LangID" Type="int" Nullable="false" />
     <Property Name="ModuleID" Type="int" Nullable="false" />
     <Property Name="ModuleItemID" Type="int" Nullable="false" />
+<<<<<<< HEAD
     <Property Name="ModuleItemField" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Translating" Type="nvarchar(max)" />
     <Property Name="ExtraInfo" Type="nvarchar" MaxLength="300" />
     <Property Name="Type" Type="nchar" MaxLength="100" />
+=======
+    <Property Name="ModuleItemField" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Translate" Type="nvarchar(max)" />
+    <Property Name="ExtraInfo" Type="nvarchar" Nullable="false" MaxLength="300" />
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
   </EntityType>
   <EntityType Name="UserInfo">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="UserID" Type="int" />
     <Property Name="UserFullName" Type="nvarchar" MaxLength="200" />
     <Property Name="Regency" Type="nvarchar" MaxLength="100" />
@@ -190,7 +260,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="User" Type="nvarchar" MaxLength="300" />
     <Property Name="Pass" Type="nvarchar" MaxLength="300" />
   </EntityType>
@@ -198,13 +268,13 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="UserID" Type="int" />
-    <Property Name="RoleID" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="RoleID" Type="nvarchar" Nullable="false" MaxLength="300" />
   </EntityType>
   <Association Name="FK_Article_Category">
-    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <End Role="Category" Type="VNITDatabaseModel.Store.Category" Multiplicity="0..1" />
+    <End Role="Article" Type="VNITDatabaseModel.Store.Article" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Category">
         <PropertyRef Name="ID" />
@@ -214,9 +284,24 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
+=======
+  <Association Name="FK_Category_Module">
+    <End Role="Module" Type="VNITDatabaseModel.Store.Module" Multiplicity="0..1" />
+    <End Role="Category" Type="VNITDatabaseModel.Store.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Module">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
   <Association Name="FK_Login_UserLogin">
-    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
-    <End Role="Login" Type="Self.Login" Multiplicity="*" />
+    <End Role="UserLogin" Type="VNITDatabaseModel.Store.UserLogin" Multiplicity="0..1" />
+    <End Role="Login" Type="VNITDatabaseModel.Store.Login" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="UserLogin">
         <PropertyRef Name="ID" />
@@ -227,8 +312,13 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Menu_MenuPosition">
+<<<<<<< HEAD
     <End Role="MenuPosition" Type="Self.MenuPosition" Multiplicity="0..1" />
     <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+=======
+    <End Role="MenuPosition" Type="VNITDatabaseModel.Store.MenuPosition" Multiplicity="0..1" />
+    <End Role="Menu" Type="VNITDatabaseModel.Store.Menu" Multiplicity="*" />
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
     <ReferentialConstraint>
       <Principal Role="MenuPosition">
         <PropertyRef Name="ID" />
@@ -239,8 +329,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Translate_Language">
-    <End Role="Language" Type="Self.Language" Multiplicity="1" />
-    <End Role="Translate" Type="Self.Translate" Multiplicity="*" />
+    <End Role="Language" Type="VNITDatabaseModel.Store.Language" Multiplicity="1" />
+    <End Role="Translate" Type="VNITDatabaseModel.Store.Translate" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Language">
         <PropertyRef Name="ID" />
@@ -251,8 +341,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Translate_Module">
-    <End Role="Module" Type="Self.Module" Multiplicity="1" />
-    <End Role="Translate" Type="Self.Translate" Multiplicity="*" />
+    <End Role="Module" Type="VNITDatabaseModel.Store.Module" Multiplicity="1" />
+    <End Role="Translate" Type="VNITDatabaseModel.Store.Translate" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Module">
         <PropertyRef Name="ID" />
@@ -263,8 +353,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_UserInfo_UserLogin">
-    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
-    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+    <End Role="UserLogin" Type="VNITDatabaseModel.Store.UserLogin" Multiplicity="0..1" />
+    <End Role="UserInfo" Type="VNITDatabaseModel.Store.UserInfo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="UserLogin">
         <PropertyRef Name="ID" />
@@ -275,8 +365,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_UserRole_Role">
-    <End Role="Role" Type="Self.Role" Multiplicity="1" />
-    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <End Role="Role" Type="VNITDatabaseModel.Store.Role" Multiplicity="1" />
+    <End Role="UserRole" Type="VNITDatabaseModel.Store.UserRole" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Role">
         <PropertyRef Name="ID" />
@@ -287,8 +377,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_UserRole_UserLogin">
-    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
-    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <End Role="UserLogin" Type="VNITDatabaseModel.Store.UserLogin" Multiplicity="0..1" />
+    <End Role="UserRole" Type="VNITDatabaseModel.Store.UserRole" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="UserLogin">
         <PropertyRef Name="ID" />
@@ -298,6 +388,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
   <EntityContainer Name="VNITDatabaseModelStoreContainer">
     <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
@@ -350,4 +441,6 @@
       <End Role="UserRole" EntitySet="UserRole" />
     </AssociationSet>
   </EntityContainer>
+=======
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
 </Schema>

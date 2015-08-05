@@ -15,9 +15,17 @@
         <EntityTypeShape EntityType="VNITDatabaseModel.SlideShow" Width="1.5" PointX="3.75" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="VNITDatabaseModel.Support" Width="1.5" PointX="5.375" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="VNITDatabaseModel.sysdiagram" PointX="7" PointY="9.375" Width="1.5" IsExpanded="true" />
+<<<<<<< HEAD
         <EntityTypeShape EntityType="VNITDatabaseModel.UserInfo" Width="1.5" PointX="8.625" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VNITDatabaseModel.UserLogin" Width="1.5" PointX="6.5" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VNITDatabaseModel.UserRole" Width="1.5" PointX="8.625" PointY="2.75" IsExpanded="true" />
+=======
+        <EntityTypeShape EntityType="VNITDatabaseModel.Translate" Width="1.5" PointX="4" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNITDatabaseModel.UserInfo" Width="1.5" PointX="8.625" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNITDatabaseModel.UserLogin" Width="1.5" PointX="6.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VNITDatabaseModel.UserRole" Width="1.5" PointX="8.625" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="VNITDatabaseModel.FK_Translate_Language" ManuallyRouted="false" />
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
         <AssociationConnector Association="VNITDatabaseModel.FK_Login_UserLogin" ManuallyRouted="false" />
         <AssociationConnector Association="VNITDatabaseModel.FK_UserRole_Role" ManuallyRouted="false" />
         <AssociationConnector Association="VNITDatabaseModel.FK_UserInfo_UserLogin" ManuallyRouted="false" />
@@ -29,10 +37,14 @@
         <EntityTypeShape EntityType="VNITDatabaseModel.Category" Width="1.5" PointX="0.5" PointY="3.5" />
         <AssociationConnector Association="VNITDatabaseModel.FK_Article_Category" />
         <AssociationConnector Association="VNITDatabaseModel.FK_Category_Module" />
+<<<<<<< HEAD
         <EntityTypeShape EntityType="VNITDatabaseModel.Translate" Width="1.5" PointX="4" PointY="0.5" />
         <AssociationConnector Association="VNITDatabaseModel.FK_Translate_Language" />
         <AssociationConnector Association="VNITDatabaseModel.FK_Translate_Module" />
         </Diagram>
+=======
+      </Diagram>
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

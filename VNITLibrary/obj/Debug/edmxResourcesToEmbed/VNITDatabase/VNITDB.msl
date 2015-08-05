@@ -154,6 +154,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+<<<<<<< HEAD
+=======
+    <AssociationSetMapping Name="FK_Translate_Language" TypeName="VNITDatabaseModel.FK_Translate_Language" StoreEntitySet="Translate">
+      <EndProperty Name="Language">
+        <ScalarProperty Name="ID" ColumnName="LangID" />
+      </EndProperty>
+      <EndProperty Name="Translate">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
     <AssociationSetMapping Name="FK_Login_UserLogin" TypeName="VNITDatabaseModel.FK_Login_UserLogin" StoreEntitySet="Login">
       <EndProperty Name="UserLogin">
         <ScalarProperty Name="ID" ColumnName="UserID" />
@@ -262,6 +273,7 @@
       </EndProperty>
       <Condition ColumnName="ModuleID" IsNull="false" />
     </AssociationSetMapping>
+<<<<<<< HEAD
     <EntitySetMapping Name="Translates">
       <EntityTypeMapping TypeName="VNITDatabaseModel.Translate">
         <MappingFragment StoreEntitySet="Translate">
@@ -290,5 +302,7 @@
         <ScalarProperty Name="ID" ColumnName="ModuleID" />
       </EndProperty>
     </AssociationSetMapping>
+=======
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
   </EntityContainerMapping>
 </Mapping>

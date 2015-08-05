@@ -76,8 +76,13 @@
     <Property Name="ModuleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Order" Type="Int32" />
+<<<<<<< HEAD
     <NavigationProperty Name="Categories" Relationship="VNITDatabaseModel.FK_Category_Module" FromRole="Module" ToRole="Category" />
     <NavigationProperty Name="Translates" Relationship="VNITDatabaseModel.FK_Translate_Module" FromRole="Module" ToRole="Translate" />
+=======
+    <NavigationProperty Name="Translates" Relationship="Self.FK_Translate_Module" FromRole="Module" ToRole="Translate" />
+    <NavigationProperty Name="Categories" Relationship="VNITDatabaseModel.FK_Category_Module" FromRole="Module" ToRole="Category" />
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -152,6 +157,13 @@
     <NavigationProperty Name="Role" Relationship="Self.FK_UserRole_Role" FromRole="UserRole" ToRole="Role" />
     <NavigationProperty Name="UserLogin" Relationship="Self.FK_UserRole_UserLogin" FromRole="UserRole" ToRole="UserLogin" />
   </EntityType>
+<<<<<<< HEAD
+=======
+  <Association Name="FK_Translate_Language">
+    <End Role="Language" Type="Self.Language" Multiplicity="1" />
+    <End Role="Translate" Type="Self.Translate" Multiplicity="*" />
+  </Association>
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
   <Association Name="FK_Login_UserLogin">
     <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
     <End Role="Login" Type="Self.Login" Multiplicity="*" />
@@ -182,6 +194,13 @@
     <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
     <EntitySet Name="UserLogins" EntityType="Self.UserLogin" />
     <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+<<<<<<< HEAD
+=======
+    <AssociationSet Name="FK_Translate_Language" Association="Self.FK_Translate_Language">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="Translate" EntitySet="Translates" />
+    </AssociationSet>
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
     <AssociationSet Name="FK_Login_UserLogin" Association="Self.FK_Login_UserLogin">
       <End Role="UserLogin" EntitySet="UserLogins" />
       <End Role="Login" EntitySet="Logins" />
@@ -214,6 +233,7 @@
       <End Role="Module" EntitySet="Modules" />
       <End Role="Category" EntitySet="Categories" />
     </AssociationSet>
+<<<<<<< HEAD
     <EntitySet Name="Translates" EntityType="VNITDatabaseModel.Translate" />
     <AssociationSet Name="FK_Translate_Language" Association="VNITDatabaseModel.FK_Translate_Language">
       <End Role="Language" EntitySet="Languages" />
@@ -223,6 +243,8 @@
       <End Role="Module" EntitySet="Modules" />
       <End Role="Translate" EntitySet="Translates" />
     </AssociationSet>
+=======
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
   </EntityContainer>
   <EntityType Name="Config">
     <Key>
@@ -267,7 +289,11 @@
     <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="Title" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="Description" MaxLength="3000" FixedLength="false" Unicode="true" />
+<<<<<<< HEAD
     <Property Type="String" Name="Figure" MaxLength="Max" FixedLength="false" Unicode="true" />
+=======
+    <Property Type="String" Name="Figure" MaxLength="200" FixedLength="false" Unicode="true" />
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
     <Property Type="Int32" Name="ParentID" />
     <Property Type="String" Name="Link" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Type="Int32" Name="Order" />
@@ -282,6 +308,7 @@
     <End Type="VNITDatabaseModel.Module" Role="Module" Multiplicity="0..1" />
     <End Type="VNITDatabaseModel.Category" Role="Category" Multiplicity="*" />
   </Association>
+<<<<<<< HEAD
   <EntityType Name="Translate">
     <Key>
       <PropertyRef Name="ID" />
@@ -303,4 +330,6 @@
     <End Type="VNITDatabaseModel.Module" Role="Module" Multiplicity="1" />
     <End Type="VNITDatabaseModel.Translate" Role="Translate" Multiplicity="*" />
   </Association>
+=======
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
 </Schema>

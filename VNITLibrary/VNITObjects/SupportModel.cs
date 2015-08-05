@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
+<<<<<<< HEAD:VNITLibrary/VNITObjects/Support.cs
 
 namespace VNITLibrary.VNITDatabase
 {
     public partial class Support
+=======
+using VNITLibrary.VNITDatabase;
+
+namespace VNITLibrary
+{
+    public partial class SupportModel : BasePage
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d:VNITLibrary/VNITObjects/SupportModel.cs
     {
         public string createNewObjAndShow(string name, string phone)
         {

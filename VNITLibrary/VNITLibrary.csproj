@@ -62,6 +62,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VNITDB.edmx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="VNITObjects\Article.cs" />
     <Compile Include="VNITObjects\Category.cs" />
     <Compile Include="VNITObjects\FilterParams.cs" />
@@ -83,6 +84,59 @@
     <Compile Include="VNITObjects\UserInfo.cs" />
     <Compile Include="VNITObjects\UserLogin.cs" />
     <Compile Include="VNITObjects\UserRole.cs" />
+=======
+    <Compile Include="VNITObjects\ArticleModel.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VNITObjects\CategoryModel.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VNITObjects\FilterParams.cs" />
+    <Compile Include="VNITObjects\MenuModel.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VNITObjects\MenuPositionModel.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VNITObjects\ConfigModel.cs" />
+    <Compile Include="VNITObjects\ContactModel.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VNITObjects\ImageAndClipModel.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VNITObjects\LanguageModel.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VNITObjects\LoginModel.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VNITObjects\ModuleModel.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VNITObjects\RoleModel.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VNITObjects\ServerMessage.cs" />
+    <Compile Include="VNITObjects\SlideShowModel.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VNITObjects\SupportModel.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VNITObjects\TranslateModel.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VNITObjects\UserInfoModel.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VNITObjects\UserLoginModel.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VNITObjects\UserRoleModel.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+>>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
     <Compile Include="VNITUtilitiess\StringUltil.cs" />
   </ItemGroup>
   <ItemGroup />
