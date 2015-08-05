@@ -62,7 +62,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VNITDB.edmx</DependentUpon>
     </Compile>
-<<<<<<< HEAD
+	
+	
+
     <Compile Include="VNITObjects\Article.cs" />
     <Compile Include="VNITObjects\Category.cs" />
     <Compile Include="VNITObjects\FilterParams.cs" />
@@ -84,7 +86,7 @@
     <Compile Include="VNITObjects\UserInfo.cs" />
     <Compile Include="VNITObjects\UserLogin.cs" />
     <Compile Include="VNITObjects\UserRole.cs" />
-=======
+
     <Compile Include="VNITObjects\ArticleModel.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -136,7 +138,9 @@
     <Compile Include="VNITObjects\UserRoleModel.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
->>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
+
+	
+	
     <Compile Include="VNITUtilitiess\StringUltil.cs" />
   </ItemGroup>
   <ItemGroup />
