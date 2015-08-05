@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using VNITLibrary.VNITClasses;
 
-namespace VNITLibrary.VNITObjects
+namespace VNITLibrary.VNITDatabase
 {
-    public partial class ImageAndClip : BasePage
+    public partial class ImageAndClip
     {
     }
 }

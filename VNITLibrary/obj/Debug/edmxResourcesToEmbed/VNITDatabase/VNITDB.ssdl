@@ -25,20 +25,11 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nvarchar" MaxLength="200" />
     <Property Name="Description" Type="nvarchar" MaxLength="3000" />
-    <Property Name="Figure" Type="nvarchar" MaxLength="200" />
+    <Property Name="Figure" Type="nvarchar(max)" />
     <Property Name="ParentID" Type="int" />
-    <Property Name="CategoryPositionID" Type="int" />
     <Property Name="ModuleID" Type="int" />
     <Property Name="Link" Type="nvarchar" MaxLength="200" />
     <Property Name="Order" Type="int" />
-  </EntityType>
-  <EntityType Name="CategoryPosition">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MenuName" Type="nvarchar" MaxLength="100" />
-    <Property Name="Description" Type="nvarchar" MaxLength="300" />
   </EntityType>
   <EntityType Name="Config">
     <Key>
@@ -98,6 +89,28 @@
     <Property Name="Location" Type="nvarchar" MaxLength="300" />
     <Property Name="LoginActions" Type="nvarchar(max)" />
   </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="200" />
+    <Property Name="Description" Type="nvarchar" MaxLength="3000" />
+    <Property Name="MenuIcon" Type="nvarchar" MaxLength="200" />
+    <Property Name="Figure" Type="nvarchar" MaxLength="200" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="MenuPositionID" Type="int" />
+    <Property Name="Link" Type="nvarchar" MaxLength="200" />
+    <Property Name="Order" Type="int" />
+  </EntityType>
+  <EntityType Name="MenuPosition">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="300" />
+  </EntityType>
   <EntityType Name="Module">
     <Key>
       <PropertyRef Name="ID" />
@@ -156,8 +169,9 @@
     <Property Name="ModuleID" Type="int" Nullable="false" />
     <Property Name="ModuleItemID" Type="int" Nullable="false" />
     <Property Name="ModuleItemField" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="Translate" Type="nvarchar(max)" />
-    <Property Name="ExtraInfo" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Translating" Type="nvarchar(max)" />
+    <Property Name="ExtraInfo" Type="nvarchar" MaxLength="300" />
+    <Property Name="Type" Type="nchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="UserInfo">
     <Key>
@@ -200,42 +214,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Category_Category">
-    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-    <End Role="Category1" Type="Self.Category" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Category1">
-        <PropertyRef Name="ParentID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Category_CategoryPosition">
-    <End Role="CategoryPosition" Type="Self.CategoryPosition" Multiplicity="0..1" />
-    <End Role="Category" Type="Self.Category" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CategoryPosition">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Category">
-        <PropertyRef Name="CategoryPositionID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Category_Module">
-    <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
-    <End Role="Category" Type="Self.Category" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Module">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Category">
-        <PropertyRef Name="ModuleID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Login_UserLogin">
     <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
     <End Role="Login" Type="Self.Login" Multiplicity="*" />
@@ -245,6 +223,18 @@
       </Principal>
       <Dependent Role="Login">
         <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Menu_MenuPosition">
+    <End Role="MenuPosition" Type="Self.MenuPosition" Multiplicity="0..1" />
+    <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuPosition">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="MenuPositionID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -311,12 +301,13 @@
   <EntityContainer Name="VNITDatabaseModelStoreContainer">
     <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="CategoryPosition" EntityType="Self.CategoryPosition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Config" EntityType="Self.Config" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ImageAndClip" EntityType="Self.ImageAndClip" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MenuPosition" EntityType="Self.MenuPosition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Module" EntityType="Self.Module" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SlideShow" EntityType="Self.SlideShow" Schema="dbo" store:Type="Tables" />
@@ -330,21 +321,13 @@
       <End Role="Category" EntitySet="Category" />
       <End Role="Article" EntitySet="Article" />
     </AssociationSet>
-    <AssociationSet Name="FK_Category_Category" Association="Self.FK_Category_Category">
-      <End Role="Category" EntitySet="Category" />
-      <End Role="Category1" EntitySet="Category" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Category_CategoryPosition" Association="Self.FK_Category_CategoryPosition">
-      <End Role="CategoryPosition" EntitySet="CategoryPosition" />
-      <End Role="Category" EntitySet="Category" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Category_Module" Association="Self.FK_Category_Module">
-      <End Role="Module" EntitySet="Module" />
-      <End Role="Category" EntitySet="Category" />
-    </AssociationSet>
     <AssociationSet Name="FK_Login_UserLogin" Association="Self.FK_Login_UserLogin">
       <End Role="UserLogin" EntitySet="UserLogin" />
       <End Role="Login" EntitySet="Login" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Menu_MenuPosition" Association="Self.FK_Menu_MenuPosition">
+      <End Role="MenuPosition" EntitySet="MenuPosition" />
+      <End Role="Menu" EntitySet="Menu" />
     </AssociationSet>
     <AssociationSet Name="FK_Translate_Language" Association="Self.FK_Translate_Language">
       <End Role="Language" EntitySet="Language" />

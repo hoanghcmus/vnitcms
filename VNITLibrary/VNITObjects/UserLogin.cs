@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using VNITLibrary.VNITClasses;
-using VNITLibrary.VNITUtilitiess;
+using VNITLibrary;
+using VNITLibrary.VNITDatabase;
 
-namespace VNITLibrary.VNITObjects
+namespace VNITLibrary.VNITDatabase
 {
-    public partial class UserLogin : BasePage
+    public partial class UserLogin
     {
-        public static VNITLibrary.VNITDatabase.UserLogin FindUser(string user, string pass)
+        public static UserLogin FindUser(string user, string pass)
         {
             var encPass = StringUltil.GetMd5Hash(pass);
             using (var db = ConnectDB.Db())

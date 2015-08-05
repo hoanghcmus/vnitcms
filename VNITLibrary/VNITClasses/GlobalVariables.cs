@@ -5,7 +5,7 @@ using System.Text;
 using System.Web;
 using VNITLibrary.VNITDatabase;
 
-namespace VNITLibrary.VNITClasses
+namespace VNITLibrary
 {
     public class GlobalVariables
     {

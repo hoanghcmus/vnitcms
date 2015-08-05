@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
-using VNITLibrary.VNITObjects;
+using VNITLibrary.VNITDatabase;
 
-namespace VNITLibrary.VNITClasses
+namespace VNITLibrary
 {
     class SysConfig
     {
@@ -14,7 +14,8 @@ namespace VNITLibrary.VNITClasses
             var t = new List<Config>();
             return t;
         }
-        private static string GetStringValue(int configID){                    
+        private static string GetStringValue(int configID)
+        {
             return "";
         }
 

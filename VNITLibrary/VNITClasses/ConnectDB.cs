@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using VNITLibrary.VNITDatabase;
 
-namespace VNITLibrary.VNITClasses
+namespace VNITLibrary
 {
     public class ConnectDB
     {

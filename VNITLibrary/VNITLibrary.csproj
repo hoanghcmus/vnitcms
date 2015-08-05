@@ -50,6 +50,8 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="VNITClasses\ConnectDB.cs" />
+    <Compile Include="VNITClasses\Constants.cs" />
+    <Compile Include="VNITClasses\ConvertType.cs" />
     <Compile Include="VNITClasses\Culture.cs" />
     <Compile Include="VNITClasses\GlobalVariables.cs" />
     <Compile Include="VNITClasses\OptionItem.cs" />
@@ -60,52 +62,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VNITDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="VNITObjects\Article.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="VNITObjects\Category.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="VNITObjects\CategoryPosition.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="VNITObjects\Article.cs" />
+    <Compile Include="VNITObjects\Category.cs" />
+    <Compile Include="VNITObjects\FilterParams.cs" />
+    <Compile Include="VNITObjects\KeyValuePair.cs" />
+    <Compile Include="VNITObjects\Menu.cs" />
+    <Compile Include="VNITObjects\MenuPosition.cs" />
     <Compile Include="VNITObjects\Config.cs" />
-    <Compile Include="VNITObjects\Contact.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="VNITObjects\ImageAndClip.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="VNITObjects\Language.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="VNITObjects\Login.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="VNITObjects\Module.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="VNITObjects\Role.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="VNITObjects\SlideShow.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="VNITObjects\Support.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="VNITObjects\Translate.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="VNITObjects\UserInfo.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="VNITObjects\UserLogin.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="VNITObjects\UserRole.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="VNITObjects\Contact.cs" />
+    <Compile Include="VNITObjects\ImageAndClip.cs" />
+    <Compile Include="VNITObjects\Language.cs" />
+    <Compile Include="VNITObjects\Login.cs" />
+    <Compile Include="VNITObjects\Module.cs" />
+    <Compile Include="VNITObjects\ObjType.cs" />
+    <Compile Include="VNITObjects\Rolel.cs" />
+    <Compile Include="VNITObjects\ServerMessage.cs" />
+    <Compile Include="VNITObjects\SlideShow.cs" />
+    <Compile Include="VNITObjects\Support.cs" />
+    <Compile Include="VNITObjects\Translate.cs" />
+    <Compile Include="VNITObjects\UserInfo.cs" />
+    <Compile Include="VNITObjects\UserLogin.cs" />
+    <Compile Include="VNITObjects\UserRole.cs" />
     <Compile Include="VNITUtilitiess\StringUltil.cs" />
   </ItemGroup>
   <ItemGroup />

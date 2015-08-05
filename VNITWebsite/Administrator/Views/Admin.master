@@ -1,7 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin.master.cs" Inherits="Administrator_Views_Admin" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title><%=Resources.Resource.AdminTitle %></title>
@@ -17,8 +16,14 @@
     <link href="/Styles/Admin/SBAdmin/timeline.css" rel="stylesheet" />
     <link href="/Styles/Flags/flags.css" rel="stylesheet" />
 
+    <%-- CSS for Datatable Jquery --%>
+    <link href="/Styles/Datatables/jquery.dataTables.min.css" rel="stylesheet" />
+
     <%-- Notification CSS --%>
     <link href=" /Styles/Admin/VNITAdmin/notification.css" rel="stylesheet" />
+
+    <%-- Using for validation --%>
+    <script src="/Styles/Admin/VNITAdmin/vnit.validate.js"></script>
 
     <%-- Extension for html head --%>
     <asp:ContentPlaceHolder ID="HeadExtension" runat="server">
@@ -26,8 +31,8 @@
 </head>
 <body>
     <form id="AdminForm" runat="server" enctype="multipart/form-data">
-        <asp:ScriptManager ID="AdminScriptManager" runat="server"></asp:ScriptManager>
 
+        <asp:ScriptManager ID="AdminScriptManager" runat="server"></asp:ScriptManager>
         <div id="wrapper">
 
             <!-- Navigation -->
@@ -54,18 +59,18 @@
                             <li>
                                 <a href="javascript:void();">
                                     <div>
-                                        <strong>John Smith</strong>
+                                        <strong>Nguyễn Ngọc Hoàng</strong>
                                         <span class="pull-right text-muted">
-                                            <em>Yesterday</em>
+                                            <em>Hôm qua</em>
                                         </span>
                                     </div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                                    <div>Vui lòng gửi phản hồi cho tôi ngay sau khi nhận được thư này</div>
                                 </a>
                             </li>
                             <li class="divider"></li>
                             <li>
                                 <a class="text-center" href="javascript:void();">
-                                    <strong>Read All Messages</strong>
+                                    <strong>Đọc tất cả tin nhắn</strong>
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                             </li>
@@ -155,10 +160,10 @@
                                 <a href="CategoryList.aspx"><i class="fa fa-list-alt fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuCatManage %><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="CategoryList.aspx"><i class="fa fa-tasks fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuCatList %></a>
+                                        <a href="CategoryManager.aspx"><i class="fa fa-tasks fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuCatList %></a>
                                     </li>
                                     <li>
-                                        <a href="CategoryAddOrEdit.aspx?ID=0"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuCatAdd %></a>
+                                        <a href="CategoryEdit.aspx"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuCatAdd %></a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -169,10 +174,10 @@
                                 <a href="javascript:void();"><i class="fa fa-file-text-o fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.ArticleManage %><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="javascript:void();"><i class="fa fa-files-o fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.ArtileList %></a>
+                                        <a href="ArticleManager.aspx"><i class="fa fa-files-o fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.ArtileList %></a>
                                     </li>
                                     <li>
-                                        <a href="javascript:void();"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.ArticleAdd %></a>
+                                        <a href="ArticleEdit.aspx"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.ArticleAdd %></a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -183,10 +188,10 @@
                                 <a href="javascript:void();"><i class="fa fa-navicon fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuManage %><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="javascript:void();"><i class="fa fa-tasks fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuList %></a>
+                                        <a href="MenuManager.aspx"><i class="fa fa-tasks fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuList %></a>
                                     </li>
                                     <li>
-                                        <a href="javascript:void();"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuAdd %></a>
+                                        <a href="MenuEdit.aspx"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuAdd %></a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -198,10 +203,10 @@
                                 <a href="javascript:void();"><i class="fa fa-video-camera fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.VideoManage %><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="javascript:void();"><i class="fa fa-file-video-o fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.VideoList %></a>
+                                        <a href="VideoManager.aspx"><i class="fa fa-file-video-o fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.VideoList %></a>
                                     </li>
                                     <li>
-                                        <a href="javascript:void();"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.VideoAdd %></a>
+                                        <a href="VideoEdit.aspx"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.VideoAdd %></a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -212,10 +217,10 @@
                                 <a href="javascript:void();"><i class="fa fa-image fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.GalleryManage %><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="javascript:void();"><i class="fa fa-credit-card fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.GalleryList %></a>
+                                        <a href="GalleryManager.aspx"><i class="fa fa-credit-card fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.GalleryList %></a>
                                     </li>
                                     <li>
-                                        <a href="javascript:void();"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.GalleryAdd %></a>
+                                        <a href="GalleryEdit.aspx"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.GalleryAdd %></a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -223,28 +228,28 @@
 
                             <%-- Manage Slideshow --%>
                             <li>
-                                <a href="javascript:void();"><i class="fa fa-star-half-o fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.SlideShowManage %></a>
+                                <a href="SlideshowManager.aspx"><i class="fa fa-star-half-o fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.SlideShowManage %></a>
                             </li>
                             <%-- Manage Contact Letter--%>
                             <li>
-                                <a href="javascript:void();"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.ContactLetter %></a>
+                                <a href="ContactManager.aspx"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.ContactLetter %></a>
                             </li>
                             <%-- Manage Support Infomation --%>
                             <li>
-                                <a href="javascript:void();"><i class="fa fa-phone fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.CustomerSuport %></a>
+                                <a href="SupportManger.aspx"><i class="fa fa-phone fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.CustomerSuport %></a>
                             </li>
                             <%-- Manage User Login --%>
                             <li>
                                 <a href="javascript:void();"><i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.UserManage %><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="javascript:void();"><i class="fa fa-group fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.UserList %></a>
+                                        <a href="UserManager.aspx"><i class="fa fa-group fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.UserList %></a>
                                     </li>
                                     <li>
-                                        <a href="javascript:void();"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.UserAdd %></a>
+                                        <a href="UserEdit.aspx"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.UserAdd %></a>
                                     </li>
                                     <li>
-                                        <a href="javascript:void();"><i class="fa fa-bullhorn fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.UserLoginAction %></a>
+                                        <a href="UserActionsLog.aspx"><i class="fa fa-bullhorn fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.UserLoginAction %></a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -305,19 +310,28 @@
         </div>
 
     </form>
+    <%-- Script for datatable jquery --%>
+    <script src="/Styles/Admin/VNITAdmin/jquery-1.10.2.min.js"></script>
+    <script src="/Styles/Datatables/jquery.dataTables.min.js"></script>
 
     <%-- Javascript Jquery - SBAdmin --%>
-    <script src="/Styles/Admin/SBAdmin/jquery.min.js"></script>
     <script src="/Styles/Admin/SBAdmin/bootstrap.min.js"></script>
     <script src="/Styles/Admin/SBAdmin/metisMenu.min.js"></script>
     <script src="/Styles/Admin/SBAdmin/sb-admin-2.js"></script>
     <script src="/Styles/Admin/SBAdmin/morris.min.js"></script>
     <script src="/Styles/Admin/SBAdmin/raphael-min.js"></script>
-    <script src="/Styles/Admin/SBAdmin/morris-data.js"></script>
+    <%--<script src="/Styles/Admin/SBAdmin/morris-data.js"> Scipt nay dung do voi datatable</script>--%>
 
     <%-- Notification Jquery --%>
     <script src="/Styles/Admin/VNITAdmin/notification.js"></script>
 
+    <%-- Nice scroll bar --%>
+    <script src="/Styles/Nicescroll/jquery.nicescroll.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("html").niceScroll();
+        });
+    </script>
     <%-- Extension for Jquery --%>
     <asp:ContentPlaceHolder ID="FootExtension" runat="server">
     </asp:ContentPlaceHolder>

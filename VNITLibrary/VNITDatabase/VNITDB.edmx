@@ -30,20 +30,11 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="200" />
           <Property Name="Description" Type="nvarchar" MaxLength="3000" />
-          <Property Name="Figure" Type="nvarchar" MaxLength="200" />
+          <Property Name="Figure" Type="nvarchar(max)" />
           <Property Name="ParentID" Type="int" />
-          <Property Name="CategoryPositionID" Type="int" />
           <Property Name="ModuleID" Type="int" />
           <Property Name="Link" Type="nvarchar" MaxLength="200" />
           <Property Name="Order" Type="int" />
-        </EntityType>
-        <EntityType Name="CategoryPosition">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MenuName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Description" Type="nvarchar" MaxLength="300" />
         </EntityType>
         <EntityType Name="Config">
           <Key>
@@ -103,6 +94,28 @@
           <Property Name="Location" Type="nvarchar" MaxLength="300" />
           <Property Name="LoginActions" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="3000" />
+          <Property Name="MenuIcon" Type="nvarchar" MaxLength="200" />
+          <Property Name="Figure" Type="nvarchar" MaxLength="200" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="MenuPositionID" Type="int" />
+          <Property Name="Link" Type="nvarchar" MaxLength="200" />
+          <Property Name="Order" Type="int" />
+        </EntityType>
+        <EntityType Name="MenuPosition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+        </EntityType>
         <EntityType Name="Module">
           <Key>
             <PropertyRef Name="ID" />
@@ -161,8 +174,9 @@
           <Property Name="ModuleID" Type="int" Nullable="false" />
           <Property Name="ModuleItemID" Type="int" Nullable="false" />
           <Property Name="ModuleItemField" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Translate" Type="nvarchar(max)" />
-          <Property Name="ExtraInfo" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Translating" Type="nvarchar(max)" />
+          <Property Name="ExtraInfo" Type="nvarchar" MaxLength="300" />
+          <Property Name="Type" Type="nchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
@@ -205,42 +219,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Category_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-          <End Role="Category1" Type="Self.Category" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Category1">
-              <PropertyRef Name="ParentID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Category_CategoryPosition">
-          <End Role="CategoryPosition" Type="Self.CategoryPosition" Multiplicity="0..1" />
-          <End Role="Category" Type="Self.Category" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CategoryPosition">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Category">
-              <PropertyRef Name="CategoryPositionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Category_Module">
-          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
-          <End Role="Category" Type="Self.Category" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Module">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Category">
-              <PropertyRef Name="ModuleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Login_UserLogin">
           <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
           <End Role="Login" Type="Self.Login" Multiplicity="*" />
@@ -250,6 +228,18 @@
             </Principal>
             <Dependent Role="Login">
               <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_MenuPosition">
+          <End Role="MenuPosition" Type="Self.MenuPosition" Multiplicity="0..1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuPosition">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="MenuPositionID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -316,12 +306,13 @@
         <EntityContainer Name="VNITDatabaseModelStoreContainer">
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CategoryPosition" EntityType="Self.CategoryPosition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Config" EntityType="Self.Config" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImageAndClip" EntityType="Self.ImageAndClip" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuPosition" EntityType="Self.MenuPosition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Module" EntityType="Self.Module" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SlideShow" EntityType="Self.SlideShow" Schema="dbo" store:Type="Tables" />
@@ -335,21 +326,13 @@
             <End Role="Category" EntitySet="Category" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
-          <AssociationSet Name="FK_Category_Category" Association="Self.FK_Category_Category">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="Category1" EntitySet="Category" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Category_CategoryPosition" Association="Self.FK_Category_CategoryPosition">
-            <End Role="CategoryPosition" EntitySet="CategoryPosition" />
-            <End Role="Category" EntitySet="Category" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Category_Module" Association="Self.FK_Category_Module">
-            <End Role="Module" EntitySet="Module" />
-            <End Role="Category" EntitySet="Category" />
-          </AssociationSet>
           <AssociationSet Name="FK_Login_UserLogin" Association="Self.FK_Login_UserLogin">
             <End Role="UserLogin" EntitySet="UserLogin" />
             <End Role="Login" EntitySet="Login" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_MenuPosition" Association="Self.FK_Menu_MenuPosition">
+            <End Role="MenuPosition" EntitySet="MenuPosition" />
+            <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
           <AssociationSet Name="FK_Translate_Language" Association="Self.FK_Translate_Language">
             <End Role="Language" EntitySet="Language" />
@@ -392,32 +375,7 @@
           <Property Name="View" Type="Int32" />
           <Property Name="Status" Type="Int32" />
           <Property Name="HomePage" Type="Boolean" />
-          <NavigationProperty Name="Category" Relationship="Self.FK_Article_Category" FromRole="Article" ToRole="Category" />
-        </EntityType>
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
-          <Property Name="Figure" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Link" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Order" Type="Int32" />
-          <NavigationProperty Name="Articles" Relationship="Self.FK_Article_Category" FromRole="Category" ToRole="Article" />
-          <NavigationProperty Name="Category1" Relationship="Self.FK_Category_Category" FromRole="Category" ToRole="Category1" />
-          <NavigationProperty Name="Category2" Relationship="Self.FK_Category_Category" FromRole="Category1" ToRole="Category" />
-          <NavigationProperty Name="CategoryPosition" Relationship="Self.FK_Category_CategoryPosition" FromRole="Category" ToRole="CategoryPosition" />
-          <NavigationProperty Name="Module" Relationship="Self.FK_Category_Module" FromRole="Category" ToRole="Module" />
-        </EntityType>
-        <EntityType Name="CategoryPosition">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MenuName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Categories" Relationship="Self.FK_Category_CategoryPosition" FromRole="CategoryPosition" ToRole="Category" />
+          <NavigationProperty Name="Category" Relationship="VNITDatabaseModel.FK_Article_Category" FromRole="Article" ToRole="Category" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -454,8 +412,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LangName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Translates" Relationship="Self.FK_Translate_Language" FromRole="Language" ToRole="Translate" />
           <Property Name="LangCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Translates" Relationship="VNITDatabaseModel.FK_Translate_Language" FromRole="Language" ToRole="Translate" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -477,8 +435,8 @@
           <Property Name="ModuleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Order" Type="Int32" />
-          <NavigationProperty Name="Categories" Relationship="Self.FK_Category_Module" FromRole="Module" ToRole="Category" />
-          <NavigationProperty Name="Translates" Relationship="Self.FK_Translate_Module" FromRole="Module" ToRole="Translate" />
+          <NavigationProperty Name="Categories" Relationship="VNITDatabaseModel.FK_Category_Module" FromRole="Module" ToRole="Category" />
+          <NavigationProperty Name="Translates" Relationship="VNITDatabaseModel.FK_Translate_Module" FromRole="Module" ToRole="Translate" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -521,18 +479,6 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" MaxLength="Max" FixedLength="false" Type="Binary" />
         </EntityType>
-        <EntityType Name="Translate">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ModuleItemID" Type="Int32" Nullable="false" />
-          <Property Name="ModuleItemField" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Translate1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ExtraInfo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Language" Relationship="Self.FK_Translate_Language" FromRole="Translate" ToRole="Language" />
-          <NavigationProperty Name="Module" Relationship="Self.FK_Translate_Module" FromRole="Translate" ToRole="Module" />
-        </EntityType>
         <EntityType Name="UserInfo">
           <Key>
             <PropertyRef Name="ID" />
@@ -565,33 +511,9 @@
           <NavigationProperty Name="Role" Relationship="Self.FK_UserRole_Role" FromRole="UserRole" ToRole="Role" />
           <NavigationProperty Name="UserLogin" Relationship="Self.FK_UserRole_UserLogin" FromRole="UserRole" ToRole="UserLogin" />
         </EntityType>
-        <Association Name="FK_Article_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-          <End Role="Article" Type="Self.Article" Multiplicity="*" />
-        </Association>
-        <Association Name="FK_Category_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-          <End Role="Category1" Type="Self.Category" Multiplicity="*" />
-        </Association>
-        <Association Name="FK_Category_CategoryPosition">
-          <End Role="CategoryPosition" Type="Self.CategoryPosition" Multiplicity="0..1" />
-          <End Role="Category" Type="Self.Category" Multiplicity="*" />
-        </Association>
-        <Association Name="FK_Category_Module">
-          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
-          <End Role="Category" Type="Self.Category" Multiplicity="*" />
-        </Association>
-        <Association Name="FK_Translate_Language">
-          <End Role="Language" Type="Self.Language" Multiplicity="1" />
-          <End Role="Translate" Type="Self.Translate" Multiplicity="*" />
-        </Association>
         <Association Name="FK_Login_UserLogin">
           <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
           <End Role="Login" Type="Self.Login" Multiplicity="*" />
-        </Association>
-        <Association Name="FK_Translate_Module">
-          <End Role="Module" Type="Self.Module" Multiplicity="1" />
-          <End Role="Translate" Type="Self.Translate" Multiplicity="*" />
         </Association>
         <Association Name="FK_UserRole_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
@@ -607,8 +529,6 @@
         </Association>
         <EntityContainer Name="VNITDatabaseEntities">
           <EntitySet Name="Articles" EntityType="Self.Article" />
-          <EntitySet Name="Categories" EntityType="Self.Category" />
-          <EntitySet Name="CategoryPositions" EntityType="Self.CategoryPosition" />
           <EntitySet Name="Contacts" EntityType="Self.Contact" />
           <EntitySet Name="ImageAndClips" EntityType="Self.ImageAndClip" />
           <EntitySet Name="Languages" EntityType="Self.Language" />
@@ -618,37 +538,12 @@
           <EntitySet Name="SlideShows" EntityType="Self.SlideShow" />
           <EntitySet Name="Supports" EntityType="Self.Support" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="Translates" EntityType="Self.Translate" />
           <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
           <EntitySet Name="UserLogins" EntityType="Self.UserLogin" />
           <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
-          <AssociationSet Name="FK_Article_Category" Association="Self.FK_Article_Category">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Article" EntitySet="Articles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Category_Category" Association="Self.FK_Category_Category">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Category1" EntitySet="Categories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Category_CategoryPosition" Association="Self.FK_Category_CategoryPosition">
-            <End Role="CategoryPosition" EntitySet="CategoryPositions" />
-            <End Role="Category" EntitySet="Categories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Category_Module" Association="Self.FK_Category_Module">
-            <End Role="Module" EntitySet="Modules" />
-            <End Role="Category" EntitySet="Categories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Translate_Language" Association="Self.FK_Translate_Language">
-            <End Role="Language" EntitySet="Languages" />
-            <End Role="Translate" EntitySet="Translates" />
-          </AssociationSet>
           <AssociationSet Name="FK_Login_UserLogin" Association="Self.FK_Login_UserLogin">
             <End Role="UserLogin" EntitySet="UserLogins" />
             <End Role="Login" EntitySet="Logins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Translate_Module" Association="Self.FK_Translate_Module">
-            <End Role="Module" EntitySet="Modules" />
-            <End Role="Translate" EntitySet="Translates" />
           </AssociationSet>
           <AssociationSet Name="FK_UserRole_Role" Association="Self.FK_UserRole_Role">
             <End Role="Role" EntitySet="Roles" />
@@ -663,7 +558,31 @@
             <End Role="UserRole" EntitySet="UserRoles" />
           </AssociationSet>
           <EntitySet Name="Configs" EntityType="VNITDatabaseModel.Config" />
-        </EntityContainer>
+          <EntitySet Name="Menus" EntityType="VNITDatabaseModel.Menu" />
+          <EntitySet Name="MenuPositions" EntityType="VNITDatabaseModel.MenuPosition" />
+          <AssociationSet Name="FK_Menu_MenuPosition" Association="VNITDatabaseModel.FK_Menu_MenuPosition">
+            <End Role="MenuPosition" EntitySet="MenuPositions" />
+            <End Role="Menu" EntitySet="Menus" />
+          </AssociationSet>
+          <EntitySet Name="Categories" EntityType="VNITDatabaseModel.Category" />
+          <AssociationSet Name="FK_Article_Category" Association="VNITDatabaseModel.FK_Article_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Article" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Module" Association="VNITDatabaseModel.FK_Category_Module">
+            <End Role="Module" EntitySet="Modules" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <EntitySet Name="Translates" EntityType="VNITDatabaseModel.Translate" />
+          <AssociationSet Name="FK_Translate_Language" Association="VNITDatabaseModel.FK_Translate_Language">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="Translate" EntitySet="Translates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Translate_Module" Association="VNITDatabaseModel.FK_Translate_Module">
+            <End Role="Module" EntitySet="Modules" />
+            <End Role="Translate" EntitySet="Translates" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Config">
           <Key>
             <PropertyRef Name="Id" />
@@ -673,7 +592,77 @@
           <Property Name="ConfigValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ExtraNote" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
         </EntityType>
-      </Schema>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MenuIcon" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Figure" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ParentID" />
+          <Property Type="String" Name="Link" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Order" />
+          <NavigationProperty Name="MenuPosition" Relationship="VNITDatabaseModel.FK_Menu_MenuPosition" FromRole="Menu" ToRole="MenuPosition" />
+        </EntityType>
+        <EntityType Name="MenuPosition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="MenuName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Menus" Relationship="VNITDatabaseModel.FK_Menu_MenuPosition" FromRole="MenuPosition" ToRole="Menu" />
+        </EntityType>
+        <Association Name="FK_Menu_MenuPosition">
+          <End Type="VNITDatabaseModel.MenuPosition" Role="MenuPosition" Multiplicity="0..1" />
+          <End Type="VNITDatabaseModel.Menu" Role="Menu" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Figure" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ParentID" />
+          <Property Type="String" Name="Link" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Order" />
+          <NavigationProperty Name="Articles" Relationship="VNITDatabaseModel.FK_Article_Category" FromRole="Category" ToRole="Article" />
+          <NavigationProperty Name="Module" Relationship="VNITDatabaseModel.FK_Category_Module" FromRole="Category" ToRole="Module" />
+        </EntityType>
+        <Association Name="FK_Article_Category">
+          <End Type="VNITDatabaseModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="VNITDatabaseModel.Article" Role="Article" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Category_Module">
+          <End Type="VNITDatabaseModel.Module" Role="Module" Multiplicity="0..1" />
+          <End Type="VNITDatabaseModel.Category" Role="Category" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Translate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleItemID" Type="Int32" Nullable="false" />
+          <Property Name="ModuleItemField" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Translating" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraInfo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Language" Relationship="VNITDatabaseModel.FK_Translate_Language" FromRole="Translate" ToRole="Language" />
+          <NavigationProperty Name="Module" Relationship="VNITDatabaseModel.FK_Translate_Module" FromRole="Translate" ToRole="Module" />
+        </EntityType>
+        <Association Name="FK_Translate_Language">
+          <End Type="VNITDatabaseModel.Language" Role="Language" Multiplicity="1" />
+          <End Type="VNITDatabaseModel.Translate" Role="Translate" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Translate_Module">
+          <End Type="VNITDatabaseModel.Module" Role="Module" Multiplicity="1" />
+          <End Type="VNITDatabaseModel.Translate" Role="Translate" Multiplicity="*" />
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -694,27 +683,6 @@
                 <ScalarProperty Name="View" ColumnName="View" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="HomePage" ColumnName="HomePage" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="VNITDatabaseModel.Category">
-              <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Figure" ColumnName="Figure" />
-                <ScalarProperty Name="Link" ColumnName="Link" />
-                <ScalarProperty Name="Order" ColumnName="Order" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CategoryPositions">
-            <EntityTypeMapping TypeName="VNITDatabaseModel.CategoryPosition">
-              <MappingFragment StoreEntitySet="CategoryPosition">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -824,17 +792,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Translates">
-            <EntityTypeMapping TypeName="VNITDatabaseModel.Translate">
-              <MappingFragment StoreEntitySet="Translate">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ModuleItemID" ColumnName="ModuleItemID" />
-                <ScalarProperty Name="ModuleItemField" ColumnName="ModuleItemField" />
-                <ScalarProperty Name="Translate1" ColumnName="Translate" />
-                <ScalarProperty Name="ExtraInfo" ColumnName="ExtraInfo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserInfoes">
             <EntityTypeMapping TypeName="VNITDatabaseModel.UserInfo">
               <MappingFragment StoreEntitySet="UserInfo">
@@ -864,50 +821,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="FK_Article_Category" TypeName="VNITDatabaseModel.FK_Article_Category" StoreEntitySet="Article">
-            <EndProperty Name="Category">
-              <ScalarProperty Name="ID" ColumnName="CatID" />
-            </EndProperty>
-            <EndProperty Name="Article">
-              <ScalarProperty Name="ID" ColumnName="ID" />
-            </EndProperty>
-            <Condition IsNull="false" ColumnName="CatID" />
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Category_Category" TypeName="VNITDatabaseModel.FK_Category_Category" StoreEntitySet="Category">
-            <EndProperty Name="Category">
-              <ScalarProperty Name="ID" ColumnName="ParentID" />
-            </EndProperty>
-            <EndProperty Name="Category1">
-              <ScalarProperty Name="ID" ColumnName="ID" />
-            </EndProperty>
-            <Condition IsNull="false" ColumnName="ParentID" />
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Category_CategoryPosition" TypeName="VNITDatabaseModel.FK_Category_CategoryPosition" StoreEntitySet="Category">
-            <EndProperty Name="CategoryPosition">
-              <ScalarProperty Name="ID" ColumnName="CategoryPositionID" />
-            </EndProperty>
-            <EndProperty Name="Category">
-              <ScalarProperty Name="ID" ColumnName="ID" />
-            </EndProperty>
-            <Condition IsNull="false" ColumnName="CategoryPositionID" />
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Category_Module" TypeName="VNITDatabaseModel.FK_Category_Module" StoreEntitySet="Category">
-            <EndProperty Name="Module">
-              <ScalarProperty Name="ID" ColumnName="ModuleID" />
-            </EndProperty>
-            <EndProperty Name="Category">
-              <ScalarProperty Name="ID" ColumnName="ID" />
-            </EndProperty>
-            <Condition IsNull="false" ColumnName="ModuleID" />
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Translate_Language" TypeName="VNITDatabaseModel.FK_Translate_Language" StoreEntitySet="Translate">
-            <EndProperty Name="Language">
-              <ScalarProperty Name="ID" ColumnName="LangID" />
-            </EndProperty>
-            <EndProperty Name="Translate">
-              <ScalarProperty Name="ID" ColumnName="ID" />
-            </EndProperty>
-          </AssociationSetMapping>
           <AssociationSetMapping Name="FK_Login_UserLogin" TypeName="VNITDatabaseModel.FK_Login_UserLogin" StoreEntitySet="Login">
             <EndProperty Name="UserLogin">
               <ScalarProperty Name="ID" ColumnName="UserID" />
@@ -916,14 +829,6 @@
               <ScalarProperty Name="ID" ColumnName="ID" />
             </EndProperty>
             <Condition IsNull="false" ColumnName="UserID" />
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Translate_Module" TypeName="VNITDatabaseModel.FK_Translate_Module" StoreEntitySet="Translate">
-            <EndProperty Name="Module">
-              <ScalarProperty Name="ID" ColumnName="ModuleID" />
-            </EndProperty>
-            <EndProperty Name="Translate">
-              <ScalarProperty Name="ID" ColumnName="ID" />
-            </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_UserRole_Role" TypeName="VNITDatabaseModel.FK_UserRole_Role" StoreEntitySet="UserRole">
             <EndProperty Name="Role">
@@ -961,7 +866,98 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="VNITDatabaseModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Figure" ColumnName="Figure" />
+                <ScalarProperty Name="MenuIcon" ColumnName="MenuIcon" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuPositions">
+            <EntityTypeMapping TypeName="VNITDatabaseModel.MenuPosition">
+              <MappingFragment StoreEntitySet="MenuPosition">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Menu_MenuPosition" TypeName="VNITDatabaseModel.FK_Menu_MenuPosition" StoreEntitySet="Menu">
+            <EndProperty Name="Menu">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <EndProperty Name="MenuPosition">
+              <ScalarProperty Name="ID" ColumnName="MenuPositionID" />
+            </EndProperty>
+            <Condition ColumnName="MenuPositionID" IsNull="false" />
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="VNITDatabaseModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Figure" ColumnName="Figure" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Article_Category" TypeName="VNITDatabaseModel.FK_Article_Category" StoreEntitySet="Article">
+            <EndProperty Name="Article">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <EndProperty Name="Category">
+              <ScalarProperty Name="ID" ColumnName="CatID" />
+            </EndProperty>
+            <Condition ColumnName="CatID" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Category_Module" TypeName="VNITDatabaseModel.FK_Category_Module" StoreEntitySet="Category">
+            <EndProperty Name="Category">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <EndProperty Name="Module">
+              <ScalarProperty Name="ID" ColumnName="ModuleID" />
+            </EndProperty>
+            <Condition ColumnName="ModuleID" IsNull="false" />
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Translates">
+            <EntityTypeMapping TypeName="VNITDatabaseModel.Translate">
+              <MappingFragment StoreEntitySet="Translate">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ExtraInfo" ColumnName="ExtraInfo" />
+                <ScalarProperty Name="Translating" ColumnName="Translating" />
+                <ScalarProperty Name="ModuleItemField" ColumnName="ModuleItemField" />
+                <ScalarProperty Name="ModuleItemID" ColumnName="ModuleItemID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Translate_Language" TypeName="VNITDatabaseModel.FK_Translate_Language" StoreEntitySet="Translate">
+            <EndProperty Name="Translate">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <EndProperty Name="Language">
+              <ScalarProperty Name="ID" ColumnName="LangID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Translate_Module" TypeName="VNITDatabaseModel.FK_Translate_Module" StoreEntitySet="Translate">
+            <EndProperty Name="Translate">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <EndProperty Name="Module">
+              <ScalarProperty Name="ID" ColumnName="ModuleID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

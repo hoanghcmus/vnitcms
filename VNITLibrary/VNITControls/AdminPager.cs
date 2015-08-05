@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 #endregion
 
-namespace VNITLibrary.VNITControls
+namespace VNITLibrary.Pager
 {
     [ToolboxData("<{0}:AdminPager runat=\"server\"></{0}:AdminPager>")]
     public class AdminPager : WebControl, IPostBackEventHandler, INamingContainer
@@ -407,7 +407,7 @@ namespace VNITLibrary.VNITControls
         /// Gets or sets the text caption displayed as "Previous Page" in the pager control.
         /// Default value: &lt;
         /// </summary>
-        private string _previous = "<";
+        private string _previous = "Trước";
         [Category("Globalization")]
         public string PreviousClause
         {
@@ -419,7 +419,7 @@ namespace VNITLibrary.VNITControls
         /// Gets or sets the text caption displayed as "Next Page" in the pager control.
         /// Default value: &gt;
         /// </summary>
-        private string _next = ">";
+        private string _next = "Sau";
         [Category("Globalization")]
         public string NextClause
         {

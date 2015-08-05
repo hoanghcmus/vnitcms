@@ -4,13 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using VNITLibrary.VNITObjects;
+using VNITLibrary;
 
 public partial class Website_Views_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Support sp = new Support();
+        //SupportModel sp = new SupportModel();
         //string chuoi = sp.createNewObjAndShow("Nguyễn Ngọc Hoàng", "1234567890");
         //demo.Text = chuoi;
     }

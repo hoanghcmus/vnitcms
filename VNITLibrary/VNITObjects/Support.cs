@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
-using VNITLibrary.VNITClasses;
-using VNITLibrary.VNITDatabase;
 
-namespace VNITLibrary.VNITObjects
+namespace VNITLibrary.VNITDatabase
 {
-    public partial class Support : BasePage
+    public partial class Support
     {
         public string createNewObjAndShow(string name, string phone)
         {
             string rString = string.Empty;
-            using (var db = DB)
+            using (var db = ConnectDB.Db())
             {
-                var sp = new VNITDatabase.Support { Name = name, Phone = phone };
+                var sp = new Support { Name = name, Phone = phone };
                 db.AddToSupports(sp);
                 db.SaveChanges();
 
