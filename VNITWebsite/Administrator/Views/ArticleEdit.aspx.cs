@@ -184,19 +184,19 @@ public partial class Administrator_Views_ArticleEdit : BasePage
 
             if (ID <= 0)
             {
-                sm = new ServerMessage("Thêm mới bài viết thành công", ServerMessage.SuccessMessage);
+                sm = new ServerMessage("Thêm mới bài viết thành công", ServerMessage.SuccessMessage, String.Empty, String.Empty);
                 ltrCallBackFunction.Text = JsSerializer.Serialize(new ServerMessage("redirect", ServerMessage.InfoMessage, "", a.ID.ToString()));
             }
             else
             {
-                sm = new ServerMessage("Đã cập nhật thông tin bài viết", ServerMessage.SuccessMessage);
-                ltrCallBackFunction.Text = JsSerializer.Serialize(new ServerMessage("createImgBar", ServerMessage.InfoMessage));
+                sm = new ServerMessage("Đã cập nhật thông tin bài viết", ServerMessage.SuccessMessage, String.Empty, String.Empty);
+                ltrCallBackFunction.Text = JsSerializer.Serialize(new ServerMessage("createImgBar", ServerMessage.InfoMessage, String.Empty, String.Empty));
             }
 
             SaveOrUpdateTranslate(drlLanguage.SelectedValue, a.ID, new List<KeyValuePair>() { new KeyValuePair() { Key = "title", Value = title }, new KeyValuePair() { Key = "summary", Value = summary }, new KeyValuePair() { Key = "detail", Value = detail } });
         }
         else
-            sm = new ServerMessage("Có lỗi xảy ra", ServerMessage.DangerMessage);
+            sm = new ServerMessage("Có lỗi xảy ra", ServerMessage.DangerMessage, String.Empty, String.Empty);
 
         ltrServerMessage.Text = JsSerializer.Serialize(sm);
         AssignControlData(a);
@@ -257,6 +257,6 @@ public partial class Administrator_Views_ArticleEdit : BasePage
         Article a = Article.GetByID(ID);
         if (a != null && a.ID > 0)
             AssignControlData(a);
-        ltrCallBackFunction.Text = JsSerializer.Serialize(new ServerMessage("createImgBar", ServerMessage.InfoMessage));
+        ltrCallBackFunction.Text = JsSerializer.Serialize(new ServerMessage("createImgBar", ServerMessage.InfoMessage, String.Empty, String.Empty));
     }
 }

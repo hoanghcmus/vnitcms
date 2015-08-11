@@ -59,7 +59,8 @@ public partial class Administrator_Views_CategoryManager : BasePage
         {
             o.ID,
             o.Title,
-            ModuleName = Category.GetModuleName(o.ModuleID)
+            o.ModuleID,
+            ModuleName = Category.GetModuleName(ConvertType.ToInt32(o.ModuleID, 0))
         });
         rptDataTable.DataBind();
 
@@ -115,14 +116,14 @@ public partial class Administrator_Views_CategoryManager : BasePage
             var childCats = Category.GetList(id);
             if (childCats.Any())
             {
-                sm = new ServerMessage("Thể loại này có chứa thể loại con, vui lòng xóa các thể loại con trước khi xóa thể loại này", ServerMessage.DangerMessage);
+                sm = new ServerMessage("Thể loại này có chứa thể loại con, vui lòng xóa các thể loại con trước khi xóa thể loại này", ServerMessage.DangerMessage,"","");
             }
             else
             {
                 if (Category.DeleteByID(id) > 0)
-                    sm = new ServerMessage(String.Format("Đã xóa thể loại có ID {0}", id), ServerMessage.InfoMessage);
+                    sm = new ServerMessage(String.Format("Đã xóa thể loại có ID {0}", id), ServerMessage.InfoMessage, "", "");
                 else
-                    sm = new ServerMessage("Có lỗi xảy ra", ServerMessage.InfoMessage);
+                    sm = new ServerMessage("Có lỗi xảy ra", ServerMessage.InfoMessage, "", "");
             }
         }
 

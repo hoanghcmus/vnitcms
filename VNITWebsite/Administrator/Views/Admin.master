@@ -162,8 +162,7 @@
                                     <li>
                                         <a href="CategoryManager.aspx"><i class="fa fa-tasks fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuCatList %></a>
                                     </li>
-                                    <li>
-                                        <a href="CategoryEdit.aspx"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuCatAdd %></a>
+                                    <li>                                        
                                         <a href="CategoryEdit.aspx?ID=0"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;<%=Resources.Resource.MenuCatAdd %></a>
 
                                     </li>
