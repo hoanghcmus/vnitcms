@@ -95,7 +95,6 @@ public partial class CategoryEdit : BasePage
                 }
             }
         }
-
     }
 
     protected void AssignControlData(Category c)

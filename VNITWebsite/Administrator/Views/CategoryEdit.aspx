@@ -190,45 +190,45 @@
 
         $(document).on("click", ".sthumb > a.del", function () {
             var txtImgs = $("#<%=txtListImgs.ClientID%>");
-                var sthumb = $(this).parent();
-                var imgPath = sthumb.find("img").attr("src");
-                var imgPaths = txtImgs.val();
-                imgPaths = imgPaths.replace(imgPath, "").replace(";;", ";");
-                if (imgPaths.startsWith(";")) {
-                    imgPaths = imgPaths.substring(1);
-                }
-                if (imgPaths.endsWith(";") && imgPaths.length > 0) {
-                    imgPaths = imgPaths.substring(0, imgPaths.length - 1);
-                }
-                txtImgs.val(imgPaths);
-                sthumb.remove();
-            });
-
-
-            $("#<%=txtFigure.ClientID %>").bind("enterKey", function (e) {
-            var imgsrc = $("#<%=txtFigure.ClientID %>").val();
-            if (imgsrc != "") {
-                //appendSthumb(imgsrc);
-                CreatePreviewImage(imgsrc, null);
+            var sthumb = $(this).parent();
+            var imgPath = sthumb.find("img").attr("src");
+            var imgPaths = txtImgs.val();
+            imgPaths = imgPaths.replace(imgPath, "").replace(";;", ";");
+            if (imgPaths.startsWith(";")) {
+                imgPaths = imgPaths.substring(1);
             }
+            if (imgPaths.endsWith(";") && imgPaths.length > 0) {
+                imgPaths = imgPaths.substring(0, imgPaths.length - 1);
+            }
+            txtImgs.val(imgPaths);
+            sthumb.remove();
+        });
 
-            $("#<%=txtFigure.ClientID %>").bind("enterKey", function (e) {
+
+        $("#<%=txtFigure.ClientID %>").bind("enterKey", function (e) {
+            var imgsrc = $("#<%=txtFigure.ClientID %>").val();
+                if (imgsrc != "") {
+                    //appendSthumb(imgsrc);
+                    CreatePreviewImage(imgsrc, null);
+                }
+
+                $("#<%=txtFigure.ClientID %>").bind("enterKey", function (e) {
                 var imgsrc = $("#<%=txtFigure.ClientID %>").val();
                 if (imgsrc != "") appendSthumb(imgsrc);
 
             });
 
-            $("#<%=txtFigure.ClientID %>").keyup(function (e) {
-                if (e.keyCode == 13) {
-                    $(this).trigger("enterKey");
+                $("#<%=txtFigure.ClientID %>").keyup(function (e) {
+                    if (e.keyCode == 13) {
+                        $(this).trigger("enterKey");
+                    }
+                });
+
+
+                function redirect(id) {
+                    window.location = "/Administrator/Views/CategoryEdit.aspx?ID=" + id;
                 }
             });
-
-
-            function redirect(id) {
-                window.location = "/Administrator/Views/CategoryEdit.aspx?ID=" + id;
-            }
-        });
 
     </script>
 </asp:Content>

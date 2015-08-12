@@ -17,7 +17,8 @@ namespace VNITLibrary.VNITDatabase
             this.ID = ID;
         }
 
-        /* public int ModuleID
+        /**
+         public int ModuleID
          {
              get
              {
@@ -35,7 +36,8 @@ namespace VNITLibrary.VNITDatabase
                  }
                  this.ModuleReference.EntityKey = new EntityKey("VNITDatabaseEntities.Modules", "ID", value);
              }
-         } */
+         } 
+         **/
 
         public static List<Category> GetAll()
         {
