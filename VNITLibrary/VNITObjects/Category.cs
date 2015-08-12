@@ -16,25 +16,26 @@ namespace VNITLibrary.VNITDatabase
         {
             this.ID = ID;
         }
-        public int ModuleID
-        {
-            get
-            {
-                if ((this.ModuleReference.EntityKey != null))
-                {
-                    return (int)this.ModuleReference.EntityKey.EntityKeyValues[0].Value;
-                }
-                return 0;
-            }
-            set
-            {
-                if ((this.ModuleReference.EntityKey != null))
-                {
-                    this.ModuleReference = null;
-                }
-                this.ModuleReference.EntityKey = new EntityKey("VNITDatabaseEntities.Modules", "ID", value);
-            }
-        }
+
+        /* public int ModuleID
+         {
+             get
+             {
+                 if ((this.ModuleReference.EntityKey != null))
+                 {
+                     return (int)this.ModuleReference.EntityKey.EntityKeyValues[0].Value;
+                 }
+                 return 0;
+             }
+             set
+             {
+                 if ((this.ModuleReference.EntityKey != null))
+                 {
+                     this.ModuleReference = null;
+                 }
+                 this.ModuleReference.EntityKey = new EntityKey("VNITDatabaseEntities.Modules", "ID", value);
+             }
+         } */
 
         public static List<Category> GetAll()
         {

@@ -8,11 +8,8 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 #endregion
 
-<<<<<<< HEAD
+
 namespace VNITLibrary.Pager
-=======
-namespace VNITLibrary
->>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
 {
     [ToolboxData("<{0}:AdminPager runat=\"server\"></{0}:AdminPager>")]
     public class AdminPager : WebControl, IPostBackEventHandler, INamingContainer

@@ -109,9 +109,9 @@ public partial class Administrator_Views_ArticleManager : BasePage
             if (t == null) return;
 
             if (Article.DeleteByID(id) > 0)
-                sm = new ServerMessage(String.Format("Đã xóa bài viết có ID {0}", id), ServerMessage.InfoMessage);
+                sm = new ServerMessage(String.Format("Đã xóa bài viết có ID {0}", id), ServerMessage.InfoMessage, String.Empty, String.Empty);
             else
-                sm = new ServerMessage("Có lỗi xảy ra", ServerMessage.InfoMessage);
+                sm = new ServerMessage("Có lỗi xảy ra", ServerMessage.InfoMessage, String.Empty, String.Empty);
 
         }
 

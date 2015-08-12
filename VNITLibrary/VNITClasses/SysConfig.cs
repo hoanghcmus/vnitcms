@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
-<<<<<<< HEAD
 using VNITLibrary.VNITDatabase;
-=======
->>>>>>> 7648eca1a6faf9b6f177b05455b8a0369d075e3d
 
 namespace VNITLibrary
 {
     class SysConfig
     {
-        public static List<ConfigModel> GetAll()
+        public static List<Config> GetAll()
         {
-            var t = new List<ConfigModel>();
+            var t = new List<Config>();
             return t;
         }
         private static string GetStringValue(int configID)
