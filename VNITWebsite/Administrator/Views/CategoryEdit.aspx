@@ -205,6 +205,7 @@
             });
 
 
+<<<<<<< HEAD
             $("#<%=txtFigure.ClientID %>").bind("enterKey", function (e) {
             var imgsrc = $("#<%=txtFigure.ClientID %>").val();
             if (imgsrc != "") {
@@ -230,6 +231,34 @@
             }
         });
 
+=======
+
+        $("#<%=txtFigure.ClientID %>").bind("enterKey", function (e) {
+            var imgsrc = $("#<%=txtFigure.ClientID %>").val();
+                if (imgsrc != "") {
+                    //appendSthumb(imgsrc);
+                    CreatePreviewImage(imgsrc, null);
+                }
+
+                $("#<%=txtFigure.ClientID %>").bind("enterKey", function (e) {
+                var imgsrc = $("#<%=txtFigure.ClientID %>").val();
+                if (imgsrc != "") appendSthumb(imgsrc);
+
+            });
+
+                $("#<%=txtFigure.ClientID %>").keyup(function (e) {
+                    if (e.keyCode == 13) {
+                        $(this).trigger("enterKey");
+                    }
+                });
+
+
+                function redirect(id) {
+                    window.location = "/Administrator/Views/CategoryEdit.aspx?ID=" + id;
+                }
+            });
+
+>>>>>>> c806428f8466261d34ea3bd4faa090fdb21f3b2d
     </script>
 </asp:Content>
 

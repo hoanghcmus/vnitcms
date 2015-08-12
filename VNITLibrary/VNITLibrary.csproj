@@ -66,6 +66,9 @@
     <Compile Include="VNITObjects\Category.cs" />
     <Compile Include="VNITObjects\FilterParams.cs" />
     <Compile Include="VNITObjects\KeyValuePair.cs" />
+    <Compile Include="VNITObjects\Link.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="VNITObjects\Menu.cs" />
     <Compile Include="VNITObjects\MenuPosition.cs" />
     <Compile Include="VNITObjects\Contact.cs" />
